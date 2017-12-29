@@ -102,7 +102,7 @@ public class SignUpFrag extends Fragment {
             etPasswordSignUp.setError("Enter the more then 6 digit passowrd");
         }
         else {
-            DialogUtils.showProgressSweetDialog(getActivity(), "Getting registered");
+//            DialogUtils.showProgressSweetDialog(getActivity(), "Getting registered");
             apiCall();
 
 
@@ -114,7 +114,7 @@ public class SignUpFrag extends Fragment {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Links.User_Url+"register", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                DialogUtils.sweetAlertDialog.dismiss();
+             //   DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response).getJSONObject("data");
                     String api_token=jsonObject.getString("api_token");
@@ -131,7 +131,7 @@ public class SignUpFrag extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
+              //  DialogUtils.sweetAlertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Email already registered");

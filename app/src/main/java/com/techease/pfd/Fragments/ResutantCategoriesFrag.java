@@ -2,7 +2,6 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,8 +33,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 
 public class ResutantCategoriesFrag extends Fragment {
 
@@ -61,7 +58,6 @@ String restId,api_token,catId;
         recyclerView=(RecyclerView)view.findViewById(R.id.rvCategories);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         Cmodel=new ArrayList<>();
-        DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
         apicall();
         categoriesMenuAdapter=new CategoriesMenuAdapter(getActivity(),Cmodel);
         recyclerView.setAdapter(categoriesMenuAdapter);
@@ -74,7 +70,8 @@ String restId,api_token,catId;
             @Override
             public void onResponse(String response) {
                 Log.d("zma Cmenu", response);
-                DialogUtils.sweetAlertDialog.dismiss();
+
+
                     try {
                         JSONObject jsonObject=new JSONObject(response);
                         JSONObject jsonObj=jsonObject.getJSONObject("data");
@@ -107,18 +104,8 @@ String restId,api_token,catId;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                pDialog.setTitleText("Unauthenticated");
-                pDialog.setConfirmText("OK");
-                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        pDialog.dismissWithAnimation();
-                    }
-                });
-                pDialog.show();
+                //DialogUtils.sweetAlertDialog.dismiss();
+                // DialogUtils.showErrorTypeAlertDialog(getActivity(), "Server error");
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }

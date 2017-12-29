@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -31,12 +32,18 @@ public class Setting extends Fragment {
     SharedPreferences.Editor editor;
     String strUserId,strUserFname,strUserLname,strGender,strUserLoc,strUserBirthday;
     Typeface typeface,typeface2;
+    ProgressBar progressBar;
+    int progressbarstatus = 0;
     CallbackManager callbackManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_setting, container, false);
+
+        progressBar=(ProgressBar)view.findViewById(R.id.progress_bar_Setting);
+        progressBar.setVisibility(View.VISIBLE);
+        setProgressValue(progressbarstatus);
 
         sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -106,6 +113,29 @@ public class Setting extends Fragment {
         parameters.putString("fields", "gender,email,location");
         request.setParameters(parameters);
         request.executeAsync();
+
+
+
+
+        progressBar.setVisibility(View.INVISIBLE);
         return view;
+    }
+
+    private void setProgressValue(final int progressbarstatus) {
+        // set the progress
+        progressBar.setProgress(progressbarstatus);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progressbarstatus + 10);
+            }
+        });
+        thread.start();
     }
 }

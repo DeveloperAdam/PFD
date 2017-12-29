@@ -2,7 +2,6 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -38,8 +38,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 
@@ -51,6 +49,8 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
     SharedPreferences.Editor editor;
     ImageView imageView;
     TextView RestName,RestLocation;
+    ProgressBar progressBar;
+    int progressbarstatus = 0;
     Context context;
     int ID=1;
     private Boolean isFabOpen = false;
@@ -62,6 +62,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_resturant__details, container, false);
 
+        progressBar=(ProgressBar)view.findViewById(R.id.progress_barRestDetails);
 
         fab = (FloatingActionButton)view.findViewById(R.id.fab);
         fab1 = (FloatingActionButton)view.findViewById(R.id.fab1);
@@ -88,7 +89,6 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         imageView=(ImageView)view.findViewById(R.id.ivPesh_FD_Detial);
         RestName=(TextView)view.findViewById(R.id.tvRestNamePesh_Fd_Details);
         RestLocation=(TextView)view.findViewById(R.id.tvRestLoc_Pesh_Fd_Details);
-        DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
         apicall();
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.pagerInfoPizzaHut);
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayoutPizzaHut);
@@ -141,12 +141,13 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
     }
 
     private void apicall() {
+        progressBar.setVisibility(View.VISIBLE);
+        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants/"+restId+"?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("details", response);
-                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject JsonGet=jsonObject.getJSONObject("data");
@@ -154,6 +155,11 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
                         Glide.with(getActivity()).load(JsonGet.getString("image_url")).into(imageView);
                         RestName.setText(JsonGet.getString("name"));
                         RestLocation.setText(JsonGet.getString("location"));
+
+                        progressBar.setVisibility(View.INVISIBLE);
+
+
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -163,20 +169,8 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                pDialog.setTitleText("Unauthenticated");
-                pDialog.setConfirmText("OK");
-                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        pDialog.dismissWithAnimation();
-                    }
-                });
-                pDialog.show();
+                progressBar.setVisibility(View.INVISIBLE);
                 Log.d("error" , String.valueOf(error.getCause()));
-
 
             }
         }) {
@@ -255,7 +249,24 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
 
         }
     }
+    private void setProgressValue(final int progress) {
 
+        // set the progress
+        progressBar.setProgress(progress);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progress + 10);
+            }
+        });
+        thread.start();
+    }
 
 
     public static class PagerAdapter extends FragmentStatePagerAdapter {

@@ -2,7 +2,6 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -39,8 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 
 public class BestDeal extends Fragment {
 
@@ -51,6 +49,8 @@ public class BestDeal extends Fragment {
     SharedPreferences.Editor editor;
     String api_token;
     MaterialSearchBar searchView;
+    ProgressBar progressBar;
+    int progressbarstatus = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class BestDeal extends Fragment {
         //Declaration
         recyclerView=(RecyclerView)view.findViewById(R.id.rvBestDeal);
         searchView=(MaterialSearchBar) view.findViewById(R.id.svBestdeal);
+        progressBar=(ProgressBar)view.findViewById(R.id.progress_barBestDeal);
         searchEducationList();
         if(CheckNetwork.isInternetAvailable(getActivity()))
         {
@@ -69,7 +70,6 @@ public class BestDeal extends Fragment {
             api_token=sharedPreferences.getString("api_token","");
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             bestDealModels=new ArrayList<>();
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
             bestDealAdapter=new BestDealAdapter(getActivity(),bestDealModels);
             recyclerView.setAdapter(bestDealAdapter);
@@ -115,13 +115,13 @@ public class BestDeal extends Fragment {
     }
 
     private void apicall() {
-
+        progressBar.setVisibility(View.VISIBLE);
+        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/featured?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONArray jsonArr=jsonObject.getJSONArray("data");
@@ -140,6 +140,7 @@ public class BestDeal extends Fragment {
                         model.setId(InnerMostObj.getString("id"));
 
                         bestDealModels.add(model);
+                        progressBar.setVisibility(View.INVISIBLE);
 
                     }
                     bestDealAdapter.notifyDataSetChanged();
@@ -152,18 +153,7 @@ public class BestDeal extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                pDialog.setTitleText("Unauthenticated");
-                pDialog.setConfirmText("OK");
-                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        pDialog.dismissWithAnimation();
-                    }
-                });
-                pDialog.show();
+                progressBar.setVisibility(View.INVISIBLE);
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }
@@ -185,5 +175,23 @@ public class BestDeal extends Fragment {
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
+    }
+    private void setProgressValue(final int progress) {
+
+        // set the progress
+        progressBar.setProgress(progress);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progress + 10);
+            }
+        });
+        thread.start();
     }
 }
