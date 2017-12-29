@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -40,6 +40,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class AllResturentFrag extends Fragment {
 
@@ -49,8 +51,6 @@ public class AllResturentFrag extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String api_token,strCheckComma,image,name,id,locatoin;
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
     MaterialSearchBar searchView;
     StringTokenizer stringTokenizer;
     @Override
@@ -62,13 +62,13 @@ public class AllResturentFrag extends Fragment {
         searchEducationList();
         if(CheckNetwork.isInternetAvailable(getActivity()))
         {
-            progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
             sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             api_token=sharedPreferences.getString("api_token","");
             recyclerView=(RecyclerView)view.findViewById(R.id.rvPesh_FD);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             PFDmodels=new ArrayList<>();
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
             pesh_fd_adapter=new Pesh_FD_Adapter(getActivity(),PFDmodels);
             recyclerView.setAdapter(pesh_fd_adapter);
@@ -118,14 +118,13 @@ public class AllResturentFrag extends Fragment {
 
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-       setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-                    try {
+                DialogUtils.sweetAlertDialog.dismiss();
+                try {
                         JSONObject jsonObject=new JSONObject(response);
                         JSONArray jsonArr=jsonObject.getJSONArray("data");
                         for (int i=0; i<jsonArr.length(); i++)
@@ -138,7 +137,7 @@ public class AllResturentFrag extends Fragment {
                           stringTokenizer=new StringTokenizer(strCheckComma,",");
                           while (stringTokenizer.hasMoreTokens())
                           {
-                              Toast.makeText(getActivity(), stringTokenizer.nextToken(), Toast.LENGTH_SHORT).show();
+//                              Toast.makeText(getActivity(), stringTokenizer.nextToken(), Toast.LENGTH_SHORT).show();
                           }
                             image=temp.getString("image_url");
                             model.setRestName(temp.getString("name"));
@@ -153,8 +152,6 @@ public class AllResturentFrag extends Fragment {
 
                             PFDmodels.add(model);
 
-                            progressBar.setVisibility(View.INVISIBLE);
-
                         }
                         pesh_fd_adapter.notifyDataSetChanged();
 
@@ -166,7 +163,18 @@ public class AllResturentFrag extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              progressBar.setVisibility(View.INVISIBLE);
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Unauthenticated");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }
@@ -202,25 +210,6 @@ public class AllResturentFrag extends Fragment {
     public void onStop() {
         super.onStop();
         PFDmodels.clear();
-    }
-
-    private void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
     }
 
 }

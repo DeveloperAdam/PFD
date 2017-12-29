@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -29,6 +30,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class ResturantInfoFrag extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -48,6 +51,7 @@ public class ResturantInfoFrag extends Fragment {
             tvTiming=(TextView)view.findViewById(R.id.tvTimingPizza_Hut_Info);
             tvLoc=(TextView)view.findViewById(R.id.tvLocationInfo);
             tvAbout=(TextView)view.findViewById(R.id.tvLongText_Pizza_Hut_Info);
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
         }
         else
@@ -64,17 +68,13 @@ public class ResturantInfoFrag extends Fragment {
             @Override
             public void onResponse(String response) {
                 Log.d("details", response);
+                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject JsonGet=jsonObject.getJSONObject("data");
                     tvTiming.setText(JsonGet.getString("timings"));
                     tvLoc.setText(JsonGet.getString("location"));
                     tvAbout.setText(JsonGet.getString("about"));
-
-                    //  DialogUtils.sweetAlertDialog.dismiss();
-                    // pDialog.dismiss();
-
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -84,7 +84,18 @@ public class ResturantInfoFrag extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //    DialogUtils.sweetAlertDialog.dismiss();
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Unauthenticated");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }
