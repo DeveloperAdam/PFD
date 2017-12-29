@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20sp"
             android:layout_marginTop="5sp"
-            android:text="WOW DEAL"
+            android:text="@string/itemNameCategory"
             android:textColor="#129FDD"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -27,7 +27,7 @@
             android:layout_marginTop="3sp"
             android:textColor="#bdbdbd"
             android:layout_marginLeft="20sp"
-            android:text="2 Large Pizza with 1.5l Pespsi"
+            android:text="@string/item_description_Category"
           />
 
     </LinearLayout>
@@ -47,7 +47,7 @@
             android:id="@+id/tvCatItemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1599/-"
+            android:text="@string/itemPriceCategory"
             android:textColor="#129FDD"
             android:textSize="15sp"
             android:layout_gravity="right"

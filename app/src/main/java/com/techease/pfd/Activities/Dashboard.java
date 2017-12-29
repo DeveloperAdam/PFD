@@ -119,14 +119,7 @@ public class Dashboard extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.logout) {
-            FacebookSdk.sdkInitialize(getApplicationContext());
-            LoginManager.getInstance().logOut();
-            editor.putString("api_token"," ").commit();
-            startActivity(new Intent(Dashboard.this, MainActivity.class));
-            finish();
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -160,6 +153,14 @@ public class Dashboard extends AppCompatActivity
         {
             Fragment fragmentSetting=new Setting();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentSetting).addToBackStack("abc").commit();
+        }
+        else if (id==R.id.logout)
+        {
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            LoginManager.getInstance().logOut();
+            editor.putString("api_token"," ").commit();
+            startActivity(new Intent(Dashboard.this, MainActivity.class));
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

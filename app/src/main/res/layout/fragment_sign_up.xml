@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SIGN IN"
+                    android:text="@string/tvSignUp"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="15sp"
                     android:textSize="18sp"
@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="LOGIN TO YOUR ACCOUNT"
+                    android:text="@string/signUpText"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="40sp"
                     android:textSize="18sp"
@@ -96,7 +96,7 @@
                     android:background="@drawable/button"
                     android:layout_gravity="center|bottom"
                     android:layout_marginBottom="50sp"
-                    android:text="SIGN Up"
+                    android:text="@string/tvSignUp"
                     android:textStyle="bold"
                     android:textColor="#fff"
                     android:textSize="20sp"
@@ -110,7 +110,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ALREADY HAVE AN ACCOUNT"
+                        android:text="@string/alreadyAccount"
                         android:textColor="#fff"
                         android:textStyle="bold"
                         />
@@ -118,7 +118,7 @@
                         android:id="@+id/tvSignInSignUp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="SIGN IN"
+                        android:text="@string/signIn"
                         android:layout_marginLeft="5sp"
                         android:textStyle="bold"
                         android:textSize="16sp"

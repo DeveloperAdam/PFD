@@ -17,7 +17,7 @@
         android:id="@+id/tvRestNamePesh_Fd_Details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PIZZA HUT"
+        android:text="@string/restName"
         android:textSize="15sp"
         android:textColor="#275786"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10sp"
-            android:text="PESHAWAR"
+            android:text="@string/location"
             android:textColor="#129FDD"
             android:textSize="13sp" />
     </LinearLayout>

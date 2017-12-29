@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="50sp"
         android:background="@color/colorPrimary"
-        android:text="Your Facebook Profile"
+        android:text="@string/text"
         android:gravity="center"
         android:textSize="25sp"
         android:textColor="#fff"/>
@@ -34,7 +34,7 @@
             android:id="@+id/tvFbUserName"
             android:textSize="20sp"
             android:textColor="#129FDD"
-            android:text="Name"
+            android:text="@string/Fbname"
             android:layout_gravity="bottom"
             android:layout_margin="15sp"/>
     </LinearLayout>
@@ -45,7 +45,7 @@
  <TextView
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:text="Personal Information"
+     android:text="@string/PersonalInfo"
      android:textSize="20sp"
      android:layout_margin="10sp"
      android:textColor="#129FDD"
@@ -58,7 +58,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="@string/emial"
         android:textSize="16sp"
         android:textColor="#129FDD"
         android:layout_margin="10sp"
@@ -68,7 +68,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:layout_marginLeft="20sp"
-            android:text="example@gmail.com"
+            android:text="@string/emailValue"
             android:id="@+id/tvUserBirthday"
             />
     </LinearLayout>
@@ -79,7 +79,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Gender"
+            android:text="@string/gender"
             android:textColor="#129FDD"
             android:layout_margin="10sp"
             android:textSize="16sp"
@@ -88,7 +88,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:text="Male"
+            android:text="@string/genderValue"
             android:layout_marginLeft="10sp"
             android:layout_marginTop="10sp"
             android:id="@+id/tvUserGender"/>
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" 
-            android:text="Live In"
+            android:text="@string/LiveIn"
             android:textSize="16sp"
             android:textColor="#129FDD"
             android:layout_margin="10sp"
@@ -108,7 +108,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pesh"
+            android:text="@string/location"
             android:layout_marginTop="10sp"
             android:layout_marginLeft="15sp"
             android:id="@+id/tvUserLoc"/>

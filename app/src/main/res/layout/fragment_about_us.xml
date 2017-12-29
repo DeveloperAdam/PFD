@@ -52,7 +52,7 @@
             android:id="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PFD"
+            android:text="@string/app_name"
             android:padding="10sp"
             android:textSize="20sp"
             android:textColor="#129FDD" />
@@ -94,7 +94,7 @@
             android:id="@+id/tvFbGroupABoutUs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="FACEBOOK GROUP"
+            android:text="@string/facebook_group"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColor="#129FDD"
@@ -104,7 +104,7 @@
             android:id="@+id/tvFbLInkABoutUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Peshawar Food Diaries"
+            android:text="@string/PeshawarFoodDiaries"
             android:padding="5sp"
             android:textSize="16sp"
             />
@@ -137,7 +137,7 @@
                 android:id="@+id/tvVersion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="VERSION"
+                android:text="@string/version"
                 android:textSize="18sp"
                 android:textColor="#129FDD"
                 android:padding="5sp"
@@ -146,7 +146,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1.0.1"
+                    android:text="@string/versionId"
                     android:textSize="16sp"
                     android:padding="5sp"/>
             </LinearLayout>
@@ -178,7 +178,7 @@
             android:id="@+id/tv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DEVELOPED BY"
+            android:text="@string/dev_by"
             android:padding="5sp"
             android:textSize="18sp"
             android:textColor="#129FDD"
@@ -189,7 +189,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5sp"
-                android:text="Techease Solutions"
+                android:text="@string/companyName"
                 android:textSize="16sp"
                 />
             <LinearLayout
@@ -204,7 +204,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="www.techeasesol.com"
+                    android:text="@string/webUrl"
                     android:textSize="15sp"
                     android:padding="5sp"/>
             </LinearLayout>

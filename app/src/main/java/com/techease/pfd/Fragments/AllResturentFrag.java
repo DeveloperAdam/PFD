@@ -135,11 +135,11 @@ public class AllResturentFrag extends Fragment {
                             name=temp.getString("name");
                             id=temp.getString("id");
                           strCheckComma=locatoin=temp.getString("location");
-                          stringTokenizer=new StringTokenizer(strCheckComma,",");
-                          while (stringTokenizer.hasMoreTokens())
-                          {
-                              Toast.makeText(getActivity(), stringTokenizer.nextToken(), Toast.LENGTH_SHORT).show();
-                          }
+//                          stringTokenizer=new StringTokenizer(strCheckComma,",");
+//                          while (stringTokenizer.hasMoreTokens())
+//                          {
+//                            //  Toast.makeText(getActivity(), stringTokenizer.nextToken(), Toast.LENGTH_SHORT).show();
+//                          }
                             image=temp.getString("image_url");
                             model.setRestName(temp.getString("name"));
                             model.setId(temp.getString("id"));

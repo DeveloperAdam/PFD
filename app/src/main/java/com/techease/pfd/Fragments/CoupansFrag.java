@@ -47,8 +47,6 @@ public class CoupansFrag extends Fragment {
         {
 
             progressBar=(ProgressBar)view.findViewById(R.id.progress_barCoupans);
-
-            UseCoupan=(TextView)view.findViewById(R.id.useCoupan);
             CoupanName=(TextView)view.findViewById(R.id.coupanName);
             CoupanTime=(TextView)view.findViewById(R.id.coupansValidation);
             DiscountNo=(TextView)view.findViewById(R.id.DiscountNo);

@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -33,7 +34,8 @@ public class ResturantInfoFrag extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String restId,api_token;
-    TextView tvTiming,tvLoc,tvAbout;
+    TextView tvTiming,tvLoc,tvAbout,tvTimingTitle,tvRestInfoAddress,tvAboutTitle;
+    Typeface typeface,typeface2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,17 @@ public class ResturantInfoFrag extends Fragment {
             tvTiming=(TextView)view.findViewById(R.id.tvTimingPizza_Hut_Info);
             tvLoc=(TextView)view.findViewById(R.id.tvLocationInfo);
             tvAbout=(TextView)view.findViewById(R.id.tvLongText_Pizza_Hut_Info);
+            tvTimingTitle=(TextView)view.findViewById(R.id.tvTimng);
+            tvRestInfoAddress=(TextView)view.findViewById(R.id.tvRestInfoAddress);
+            tvAboutTitle=(TextView)view.findViewById(R.id.tvRestInfoAboutTitle);
+            typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/brandon_blk.otf");
+            typeface2=Typeface.createFromAsset(getActivity().getAssets(),"font/brandon_reg.otf");
+            tvTimingTitle.setTypeface(typeface);
+            tvLoc.setTypeface(typeface);
+            tvRestInfoAddress.setTypeface(typeface2);
+            tvAbout.setTypeface(typeface2);
+            tvAboutTitle.setTypeface(typeface);
+
             apicall();
         }
         else

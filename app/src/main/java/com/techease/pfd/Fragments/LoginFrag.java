@@ -67,6 +67,7 @@ public class LoginFrag extends Fragment {
         tvForgetPass.setTypeface(typeface);
         btnSingIn.setTypeface(typeface);
 
+
         btnSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

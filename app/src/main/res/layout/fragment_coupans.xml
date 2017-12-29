@@ -20,30 +20,31 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="GET"
+        android:text="@string/get"
         android:textSize="25sp"
         android:gravity="center"
         android:textColor="#295786"
         />
+
     <TextView
         android:id="@+id/DiscountNo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="30"
         android:layout_marginLeft="5sp"
-        android:textSize="25sp"
-        android:textColor="#295786"/>
+        android:text="@string/disscountValue"
+        android:textColor="#295786"
+        android:textSize="25sp" />
     <TextView
         android:id="@+id/DiscountType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="%"
+        android:text="@string/percentage"
         android:textSize="20sp"
         android:textColor="#295786"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Discount"
+        android:text="@string/disscount"
         android:layout_marginLeft="5sp"
         android:textColor="#295786"
         android:textSize="25sp"/>
@@ -56,19 +57,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/coupondark"
         android:scaleType="fitXY"/>
-    <TextView
-        android:id="@+id/useCoupan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Use Coupan"
-        android:textSize="18sp"
-        android:textColor="#fff"
-        android:gravity="right"
-        android:layout_gravity="right"
-        android:layout_marginTop="60sp"
-        android:layout_marginRight="40sp"
-
-        />
     <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
@@ -84,7 +72,7 @@
             android:id="@+id/coupanName"
             android:layout_width="match_parent"
             android:layout_height="45sp"
-            android:text="PESHAWAR 2017"
+            android:text="@string/Pesh"
             android:background="#295786"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -101,7 +89,7 @@
         android:id="@+id/coupansValidation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Valid Upto 22 Nov, 2017"
+        android:text="@string/expiryCoupan"
         android:layout_gravity="bottom|center"
         android:textColor="#fff"
         android:textSize="15sp"

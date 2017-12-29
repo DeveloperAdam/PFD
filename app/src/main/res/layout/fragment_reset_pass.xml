@@ -31,7 +31,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FORGET PASSWORD"
+                    android:text="@string/forgetTitle"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="15sp"
                     android:textSize="18sp"
@@ -41,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="RESET YOUR PASSWORD"
+                    android:text="@string/restPassTitle"
                     android:layout_gravity="center|top"
                     android:layout_marginTop="40sp"
                     android:textSize="18sp"
@@ -82,7 +82,7 @@
                     android:background="@drawable/button"
                     android:layout_gravity="center|bottom"
                     android:layout_marginBottom="20sp"
-                    android:text="RESET"
+                    android:text="@string/reset"
                     android:textStyle="bold"
                     android:textColor="#fff"
                     android:textSize="20sp"

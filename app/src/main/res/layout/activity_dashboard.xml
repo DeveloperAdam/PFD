@@ -42,17 +42,17 @@
                 android:layout_height="3sp"
                 android:background="#BDBDBD"
                 android:layout_alignParentBottom="true"
-                android:layout_marginBottom="130sp"
+                android:layout_marginBottom="90sp"
                 android:layout_marginLeft="10sp"
                 />
 
             <ImageView
-                android:layout_width="150sp"
-                android:layout_height="100sp"
+                android:layout_width="110sp"
+                android:layout_height="70sp"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="bottom|center"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="20dp"
                 android:background="@drawable/logoinlight" />
 
             <TextView
