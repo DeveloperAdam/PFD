@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff"
+    tools:context="com.techease.pfd.Fragments.ResturantMenuFrag">
+
+    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        app:layout_scrollFlags="scroll|enterAlways"
+        android:background="#fff"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_height="35sp">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayoutMenuPizzaHut"
+            android:layout_width="match_parent"
+            android:layout_height="30sp"
+            app:tabMode="fixed"
+            android:layout_gravity="center"
+            app:tabTextColor="#eee"
+            app:tabPaddingStart="10sp"
+            app:tabIndicatorColor="#129FDD"
+            app:tabSelectedTextColor="#129FDD"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    </android.support.design.widget.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
+        android:scrollbarStyle="outsideInset"
+        >
+    <FrameLayout
+        android:id="@+id/frameLayoutCatItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <android.support.v4.view.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pagerMenuPizzaHut"
+        android:layout_marginTop="5sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+    </FrameLayout>
+    </ScrollView>
+</LinearLayout>

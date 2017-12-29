@@ -1,0 +1,42 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/introback1"
+    tools:context=".Activities.Intro.intro1">
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="250sp"
+    android:layout_gravity="bottom"
+    android:background="@drawable/introrectangle"/>
+    <TextView
+        android:id="@+id/ResturentsTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="RESTURENTS"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="160sp"/>
+    <View
+        android:layout_width="200sp"
+        android:layout_height="2sp"
+        android:background="#fff"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="150sp"
+        />
+    <TextView
+        android:id="@+id/intro1LongText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:text="THERE ARE MANY WAYS FOOD MAKESPEOPLE HAPPY AND ONE OF THE WORTHIEST IS A TOUR THAT HAS BEEN DESCRIBED AS THE FOOD LOVER'S DREAM"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:layout_marginBottom="50sp"
+        android:layout_gravity="bottom|center"
+        android:gravity="center"/>
+
+
+</FrameLayout>

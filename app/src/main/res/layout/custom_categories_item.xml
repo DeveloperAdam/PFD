@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCatItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20sp"
+            android:layout_marginTop="5sp"
+            android:text="WOW DEAL"
+            android:textColor="#129FDD"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/tvCatItemDes"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="3sp"
+            android:textColor="#bdbdbd"
+            android:layout_marginLeft="20sp"
+            android:text="2 Large Pizza with 1.5l Pespsi"
+          />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <me.zhanghai.android.materialratingbar.MaterialRatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="20sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginRight="10sp"
+            android:id="@+id/ratingBarItem"
+            android:layout_gravity="right"
+            style="@style/Widget.MaterialRatingBar.RatingBar" />
+        <TextView
+            android:id="@+id/tvCatItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1599/-"
+            android:textColor="#129FDD"
+            android:textSize="15sp"
+            android:layout_gravity="right"
+            android:layout_marginTop="3sp"
+            android:layout_marginRight="20sp"
+        />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3sp"
+        android:layout_marginTop="5sp"
+        android:background="#eee"/>
+</LinearLayout>

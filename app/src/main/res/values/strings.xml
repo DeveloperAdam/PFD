@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">PFD</string>
+
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_dashboard">PFD</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="LongTextPizzaHutInfo">The simplest way to add Facebook Login to your app is to add LoginButton from the SDK. The LoginButton is a UI element that wraps functionality available in the LoginManager. When someone clicks on the button, the login is initiated with the permissions set in the LoginManager. The button follows the login state, and displays the correct text based on someone\'s authentication state</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="facebook_app_id">119269392093047</string>
+    <string name="fb_login_protocol_scheme">fb119269392093047</string>
+
+    <string name="newPass"><font size="15">ENTER NEW PASSWORD</font></string>
+    <string name="graph">Graph</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+
+    <string name="large_text">
+         We aim to create a community that shares our love for food and is honest, responsible in their feedback.   There is a vacuum for our province and its rich food . To ensure that the PFD serves its purpose there are certain rules that we expect our members to follow:
+• The app is about your food experiences (be it at home, restaurant, or somewhere else)
+• Be honest in your review of a restaurant.
+• If you are the owner of a restaurant or a catering business, you can post / promote it ONCE a week. When you post please state that you belong to the management or own the restaurant. Any excessive posts within a week marketing your restaurant will result in deletion.
+• HEALTHY CRITICISM is welcome but criticizing a restaurant just for the sake of it is not acceptable and unfair to them.
+• And most importantly, please be COURTEOUS and RESPECTFUL towards estaurants. No personal attacks will be tolerated.
+We hope that this app will become a healthy platform that will help foodies in connecting with each Resturants and benefiting from our experiences.
+    </string>
+    <string name="logout">logout</string>
+</resources>
