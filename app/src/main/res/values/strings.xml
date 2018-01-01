@@ -89,4 +89,6 @@ We hope that this app will become a healthy platform that will help foodies in c
     <string name="alreadyAccount">ALREADY HAVE AN ACCOUNT</string>
     <string name="enterCode">ENTER VERIFICATION CODE</string>
     <string name="verify">VERIFY</string>
+    <string name="fast_food">Fast Food</string>
+    <string name="vegetable">Vegetable</string>
 </resources>

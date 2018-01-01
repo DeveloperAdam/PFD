@@ -1,5 +1,6 @@
 package com.techease.pfd.Fragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
     ImageView imageView,btnAddNewetIng,btnAddNewetIns,ivCross;
     TextView tvTitle,tvIngredients,tvInstructions,tvTags,tvTime;
     EditText etTitle,etIngredients,etInstructions,etTime;
-    Button   btnTag1,btnTag2,btnTag3,btnTag4,btnTag5,btnSubmitRecipe;
+    Button   btnTag1,btnTag2,btnTag3,btnTag4,btnTag5,btnTag6,btnTag7,btnSubmitRecipe;
     Typeface typeface,typeface2;
     LinearLayout InstructionLayout,IngredientsLayout;
     FrameLayout frameLayoutInstruction,frameLayoutIngredients;
@@ -55,6 +56,7 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
     String strIngredients,strInstructions;
     EditText customEditText;
     ImageView customImageView;
+    String Recipe_Category;
       @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,6 +91,8 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         btnTag3=(Button)view.findViewById(R.id.btnTag3);
         btnTag4=(Button)view.findViewById(R.id.btnTag4);
         btnTag5=(Button)view.findViewById(R.id.btnTag5);
+        btnTag6=(Button)view.findViewById(R.id.btnTag6);
+        btnTag7=(Button)view.findViewById(R.id.btnTag7);
         btnSubmitRecipe=(Button)view.findViewById(R.id.btnSubmitRecipe);
 
         tvTags.setTypeface(typeface);
@@ -106,6 +110,8 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         btnTag3.setTypeface(typeface);
         btnTag4.setTypeface(typeface);
         btnTag5.setTypeface(typeface);
+        btnTag6.setTypeface(typeface);
+        btnTag7.setTypeface(typeface);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +191,8 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
           btnTag3.setOnClickListener(this);
           btnTag4.setOnClickListener(this);
           btnTag5.setOnClickListener(this);
+          btnTag6.setOnClickListener(this);
+          btnTag7.setOnClickListener(this);
 
 
 
@@ -272,6 +280,7 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -284,6 +293,28 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
                 btnAddNewetIns.setVisibility(View.INVISIBLE);
                 addEditTextForInstructions();
                 break;
+            case R.id.btnTag1:
+                Recipe_Category="Fast Food";
+                break;
+            case R.id.btnTag2:
+                Recipe_Category="Traditional";
+                break;
+            case R.id.btnTag3:
+                Recipe_Category="Afghani";
+                break;
+            case R.id.btnTag4:
+                Recipe_Category="Chinese";
+                break;
+            case R.id.btnTag5:
+                Recipe_Category="Sweets";
+                break;
+            case R.id.btnTag6:
+                Recipe_Category="Baking";
+                break;
+            case R.id.btnTag7:
+                Recipe_Category="Italian";
+                break;
+
         }
     }
 
