@@ -3,7 +3,6 @@ package com.techease.pfd.Fragments;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,8 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -38,12 +35,10 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 
 public class ResutrantDetail extends Fragment implements View.OnClickListener {
 
-    String getId,api_token,restId;
+    String api_token,restId;
     TabLayout tabLayout;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -53,9 +48,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
     int progressbarstatus = 0;
     Context context;
     int ID=1;
-    private Boolean isFabOpen = false;
-    private FloatingActionButton fab,fab1,fab2;
-    private Animation fab_open,fab_close,rotate_forward,rotate_backward;
+    ImageView ivNext,ivBack;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -64,16 +57,10 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
 
         progressBar=(ProgressBar)view.findViewById(R.id.progress_barRestDetails);
 
-        fab = (FloatingActionButton)view.findViewById(R.id.fab);
-        fab1 = (FloatingActionButton)view.findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton)view.findViewById(R.id.fab2);
-        fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
-        rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
-        rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
-        fab.setOnClickListener(this);
-        fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
+        ivNext=(ImageView)view.findViewById(R.id.ivNext);
+        ivBack=(ImageView)view.findViewById(R.id.ivBack);
+        ivBack.setOnClickListener(this);
+        ivNext.setOnClickListener(this);
 
 
         //Resturent Id get from All Resturent Fragment
@@ -198,17 +185,13 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
 
         int id = v.getId();
         switch (id){
-            case R.id.fab:
-
-                animateFAB();
-                break;
-            case R.id.fab1:
+            case R.id.ivNext:
 
                     restId=String.valueOf(++ID);
                     apicall();
 
                 break;
-            case R.id.fab2:
+            case R.id.ivBack:
                 if (restId.equals("1"))
                 {
                     restId="1";
@@ -222,33 +205,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         }
 
     }
-    public void animateFAB(){
 
-        if(isFabOpen){
-            fab2.setVisibility(View.INVISIBLE);
-            fab1.setVisibility(View.INVISIBLE);
-            fab.startAnimation(rotate_backward);
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
-            fab1.setClickable(false);
-            fab2.setClickable(false);
-            isFabOpen = false;
-            Log.d("close", "close");
-
-        } else {
-            isFabOpen = true;
-            fab1.setVisibility(View.VISIBLE);
-            fab2.setVisibility(View.VISIBLE);
-            fab.startAnimation(rotate_forward);
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
-            fab1.setClickable(true);
-            fab2.setClickable(true);
-
-            Log.d("open","open");
-
-        }
-    }
     private void setProgressValue(final int progress) {
 
         // set the progress

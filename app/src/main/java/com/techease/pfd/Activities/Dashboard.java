@@ -158,7 +158,8 @@ public class Dashboard extends AppCompatActivity
         {
             FacebookSdk.sdkInitialize(getApplicationContext());
             LoginManager.getInstance().logOut();
-            editor.putString("api_token"," ").commit();
+            editor.putString("api_token"," ");
+            editor.putString("fb"," ").commit();
             startActivity(new Intent(Dashboard.this, MainActivity.class));
             finish();
         }

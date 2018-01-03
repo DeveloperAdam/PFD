@@ -126,6 +126,7 @@ public class AllResturentFrag extends Fragment {
             public void onResponse(String response) {
                 Log.d("rest respo", response);
                     try {
+                        PFDmodels.clear();
                         JSONObject jsonObject=new JSONObject(response);
                         JSONArray jsonArr=jsonObject.getJSONArray("data");
                         for (int i=0; i<jsonArr.length(); i++)
@@ -198,11 +199,7 @@ public class AllResturentFrag extends Fragment {
 
     }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        PFDmodels.clear();
-    }
+
 
     private void setProgressValue(final int progress) {
 

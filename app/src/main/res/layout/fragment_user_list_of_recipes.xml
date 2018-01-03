@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.techease.pfd.Fragments.UserListOfRecipes">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progressbarListofRecipe"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:max="100"
+        android:progress="0" />
+
+   <android.support.v7.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:padding="8sp"
+       android:id="@+id/rvUserListOfRecipes">
+   </android.support.v7.widget.RecyclerView>
+    </FrameLayout>
+
+</LinearLayout>

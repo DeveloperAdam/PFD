@@ -1,6 +1,7 @@
 package com.techease.pfd.Fragments;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -16,19 +17,20 @@ import com.techease.pfd.R;
 
 public class Recipe extends Fragment {
     TabLayout tabLayout;
-
+    private FloatingActionButton fab;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_recipe, container, false);
 
+        fab = (FloatingActionButton)view.findViewById(R.id.fab);
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPagerPecipe);
         tabLayout = (TabLayout) view.findViewById(R.id.tablayoutRecipe);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        tabLayout.addTab(tabLayout.newTab().setText("ALL RECIPES"));
         tabLayout.addTab(tabLayout.newTab().setText("YOUR RECIPE"));
-        tabLayout.addTab(tabLayout.newTab().setText("ADD NEW RECIPE"));
         viewPager.setAdapter(new PagerAdapter(((FragmentActivity)getActivity()).getSupportFragmentManager(), tabLayout.getTabCount()));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
@@ -48,6 +50,13 @@ public class Recipe extends Fragment {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment=new AddingRecipeFragment();
+                getFragmentManager().beginTransaction().replace(R.id.container,fragment).addToBackStack("abc").commit();
             }
         });
         return view;
@@ -86,7 +95,7 @@ public class Recipe extends Fragment {
                     ListOfRecipesFragment frag=new ListOfRecipesFragment();
                     return frag;
                 case 1:
-                    AddingRecipeFragment frag2=new AddingRecipeFragment();
+                    UserListOfRecipes frag2=new UserListOfRecipes();
                     return frag2;
                 default:
                     return null;

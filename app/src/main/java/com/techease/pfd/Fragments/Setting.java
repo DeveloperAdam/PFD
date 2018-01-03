@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -74,6 +75,9 @@ public class Setting extends Fragment {
         strUserFname=sharedPreferences.getString("fname","");
         strUserLname=sharedPreferences.getString("lname","");
         strUserId=sharedPreferences.getString("userId","");
+        strUserLoc=sharedPreferences.getString("uLoc","");
+        strUserBirthday=sharedPreferences.getString("uEmail","");
+        strGender=sharedPreferences.getString("uGender","");
 
         profilePictureView = (ProfilePictureView)view.findViewById(R.id.friendProfilePicture);
         profilePictureView.setProfileId(strUserId);
@@ -82,42 +86,55 @@ public class Setting extends Fragment {
         callbackManager = CallbackManager.Factory.create();
         AccessToken accessToken=AccessToken.getCurrentAccessToken();
         //accessToken=sharedPreferences.getString("accesstoken","");
-        GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(
-                            JSONObject object,
-                            GraphResponse response) {
-                      //  Log.i("settignAct", object.toString());
+        String fb=sharedPreferences.getString("fb","");
+        if (fb.equals(""))
+        {
+            Toast.makeText(getActivity(), "You have to login through facebook", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
+                @Override
+                public void onCompleted(
+                        JSONObject object,
+                        GraphResponse response) {
+                    //  Log.i("settignAct", object.toString());
 
-                        try {
+                    try {
 
-                            strGender=object.getString("gender");
-                            strUserBirthday=object.getString("email");
-                            JSONObject jsonObject=new JSONObject();
-                            jsonObject=object.getJSONObject("location");
-                            strUserLoc=jsonObject.getString("name");
+                        strGender=object.getString("gender");
+                        strUserBirthday=object.getString("email");
+                        JSONObject jsonObject=new JSONObject();
+                        jsonObject=object.getJSONObject("location");
+                        strUserLoc=jsonObject.getString("name");
 
-                            UserBirthday.setText(strUserBirthday);
-                            UserGender.setText(strGender);
-                            UserLocation.setText(strUserLoc);
+                        UserBirthday.setText(strUserBirthday);
+                        UserGender.setText(strGender);
+                        UserLocation.setText(strUserLoc);
 
-                            Log.d("zmaGender",strGender);
+                        editor.putString("uEmail",strUserBirthday);
+                        editor.putString("uGender",strGender);
+                        editor.putString("uLoc",strUserLoc).commit();
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        // Application code
+                        Log.d("zmaGender",strGender);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                });
-        Bundle parameters = new Bundle();
-        parameters.putString("fields", "gender,email,location");
-        request.setParameters(parameters);
-        request.executeAsync();
-
-
+                    // Application code
+                }
+            });
+            Bundle parameters = new Bundle();
+            parameters.putString("fields", "gender,email,location");
+            request.setParameters(parameters);
+            request.executeAsync();
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
 
         progressBar.setVisibility(View.INVISIBLE);
+
+
         return view;
     }
 

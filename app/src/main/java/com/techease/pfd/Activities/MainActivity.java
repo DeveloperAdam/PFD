@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
                                 public void onCompleted(JSONObject object, GraphResponse response) {
                                     Log.i("LoginActivity", object.toString());
                                     // Get facebook data from login
-
+                                        String fbLogin="fb";
+                                        editor.putString("fb",fbLogin).commit();
                                     try {
                                         id=object.getString("id");
                                         first_name=object.getString("first_name");

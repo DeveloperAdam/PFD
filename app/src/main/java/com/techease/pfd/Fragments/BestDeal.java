@@ -123,6 +123,7 @@ public class BestDeal extends Fragment {
             public void onResponse(String response) {
                 Log.d("rest respo", response);
                 try {
+                    bestDealModels.clear();
                     JSONObject jsonObject=new JSONObject(response);
                     JSONArray jsonArr=jsonObject.getJSONArray("data");
                     for (int i=0; i<jsonArr.length(); i++)
@@ -176,6 +177,16 @@ public class BestDeal extends Fragment {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        apicall();
+        bestDealAdapter=new BestDealAdapter(getActivity(),bestDealModels);
+        recyclerView.setAdapter(bestDealAdapter);
+
+    }
+
     private void setProgressValue(final int progress) {
 
         // set the progress

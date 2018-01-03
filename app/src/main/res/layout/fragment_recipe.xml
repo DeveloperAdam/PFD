@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.techease.pfd.Fragments.Recipe">
 
@@ -30,7 +31,9 @@
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
 
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <android.support.v4.view.ViewPager
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/viewPagerPecipe"
@@ -38,6 +41,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         </android.support.v4.view.ViewPager>
-
+    <android.support.design.widget.FloatingActionButton
+    android:id="@+id/fab"
+    android:layout_width="50sp"
+    android:layout_height="50sp"
+    android:layout_gravity="bottom|end"
+    app:elevation="6dp"
+    android:background="#fff"
+    android:scaleType="fitXY"
+    app:pressedTranslationZ="12dp"
+    android:layout_margin="@dimen/fab_margin"
+    android:src="@drawable/addflot" />
+</FrameLayout>
 
 </LinearLayout>

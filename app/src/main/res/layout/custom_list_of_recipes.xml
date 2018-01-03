@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#fff">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardBackgroundColor="#eee"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:cardUseCompatPadding="true"
+        android:id="@+id/cardViewCustomPesh_FD">
+
+        <ImageView
+            android:layout_width="110sp"
+            android:layout_height="110sp"
+            android:background="#eee"
+            android:scaleType="fitXY"
+            android:id="@+id/ivRecipeImage"
+            />
+
+    </android.support.v7.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:layout_gravity="top"
+        android:alpha="0.8"
+        android:background="#fff">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvRecipeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_margin="10sp"
+                android:text="Recipe Name"
+                android:textColor="#129FDD"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tvRecipeCategory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:text="Recipe Category"
+                android:textColor="#BDBDBD"
+                android:textSize="15sp" />
+            <TextView
+                android:id="@+id/tvRecipeTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:layout_margin="10sp"
+                android:text="Recipe Time"
+                android:textColor="#BDBDBD"
+                android:textSize="15sp" />
+        </LinearLayout>
+<TextView
+    android:id="@+id/tvRecipeId"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="1"
+    android:textSize="25sp"
+    android:textColor="#BDBDBD"
+    android:layout_gravity="bottom|right"
+    android:layout_marginLeft="50sp"/>
+
+    </LinearLayout>
+    </LinearLayout>
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="2sp"
+      android:background="#eee"/>
+</LinearLayout>

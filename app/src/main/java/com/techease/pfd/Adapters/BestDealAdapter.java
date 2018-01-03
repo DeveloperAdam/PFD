@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -84,11 +85,13 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
         String id;
         SharedPreferences sharedPreferences;
         SharedPreferences.Editor editor;
+        LinearLayout linearLayout;
         public MyViewHolder(View itemView) {
             super(itemView);
 
             sharedPreferences = context.getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
+            linearLayout=(LinearLayout)itemView.findViewById(R.id.llParent);
             restImage=(ImageView)itemView.findViewById(R.id.ivCustomBestDeal);
             featuredImage=(ImageView)itemView.findViewById(R.id.ivCustomBestDealFeatured);
             itemName=(TextView)itemView.findViewById(R.id.tvItemNameBestDeal);
@@ -103,6 +106,7 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
             ItemDes.setTypeface(typeface2);
             ItemFeatured.setTypeface(typeface2);
 
+            linearLayout.setOnClickListener(this);
             itemPrice.setOnClickListener(this);
             itemName.setOnClickListener(this);
             ItemFeatured.setOnClickListener(this);
@@ -123,5 +127,6 @@ public class BestDealAdapter extends RecyclerView.Adapter<BestDealAdapter.MyView
             ((AppCompatActivity)context).getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).addToBackStack("abc").commit();
 
         }
+
     }
 }
