@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -34,16 +33,7 @@ import com.android.volley.toolbox.Volley;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPatch;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
-
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -143,7 +133,7 @@ public class UpdateReicpeFragment extends Fragment implements View.OnClickListen
         getRecipeId=getArguments().getString("id");
         Recipe_Category=getTag;
 
-        Log.d("meriId",getRecipeId);
+        Log.d("meriId",getTitle);
 
         if (Recipe_Category.equals("Fast-Food"))
         {
@@ -289,52 +279,7 @@ public class UpdateReicpeFragment extends Fragment implements View.OnClickListen
 
     }
 
-    private void apicall() {
-        final String title=etTitle.getText().toString();
-        final String time=etTime.getText().toString();
-        StringRequest stringRequest = new StringRequest(Request.Method.PATCH, "http://pfd.techeasesol.com/api/v1/user/recipes/"+getRecipeId+"?api_token="+apiToken
-                +"&title="+title+"&instructions="+strInstructions+"&ingredients="+strIngredients+"&time_to_cook="+time+"&tags="+Recipe_Category
-                , new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d("rest respo", response);
-                Fragment fragment=new Recipe();
-                getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
-            }
 
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-               // progressBar.setVisibility(View.INVISIBLE);
-                Log.d("error" , String.valueOf(error.getCause()));
-
-            }
-        }) {
-            @Override
-            public String getBodyContentType() {
-                return "application/x-www-form-urlencoded;charset=UTF-8";
-            }
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-//                params.put("title",title);
-//                params.put("time_to_cook",time);
-//                params.put("instructions",strInstructions);
-//                params.put("ingredients",strIngredients);
-//                params.put("tags",Recipe_Category);
-//                params.put("api_token",apiToken);
-                return params;
-            }
-
-        };
-        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        mRequestQueue.add(stringRequest);
-    }
 
 
     private void setProgressValue(final int progressbarstatus) {
@@ -355,19 +300,7 @@ public class UpdateReicpeFragment extends Fragment implements View.OnClickListen
         thread.start();
     }
 
-    private void takeDataFromFields() {
-        strIngredients = "";
-        strInstructions = "";
-        for (EditText etIngred : ingredientList) {
-            strIngredients += etIngred.getText().toString() + ",";
-            Log.d("zmaData",etIngred.getText().toString());
-        }
-        for (EditText etInstruc : instructionList) {
-            strInstructions += etInstruc.getText().toString() + ",";
-        }
-        strIngredients = strIngredients.substring(0, strIngredients.length() - 1);
-        strInstructions = strInstructions.substring(0, strInstructions.length() - 1);
-    }
+
 
     @Override
     public void onClick(View v) {
@@ -538,63 +471,65 @@ public class UpdateReicpeFragment extends Fragment implements View.OnClickListen
         IngredientsLayout.addView(frameLayout);
         ingredientList.add(editText);
     }
-
-    private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+    private void takeDataFromFields() {
+        strIngredients = "";
+        strInstructions = "";
+        for (EditText etIngred : ingredientList) {
+            strIngredients += etIngred.getText().toString() + ",";
+            Log.d("zmaData",etIngred.getText().toString());
         }
-
-        @Override
-        protected void onProgressUpdate(Integer... progress) {
-
+        for (EditText etInstruc : instructionList) {
+            strInstructions += etInstruc.getText().toString() + ",";
         }
+        strIngredients = strIngredients.substring(0, strIngredients.length() - 1);
+        strInstructions = strInstructions.substring(0, strInstructions.length() - 1);
+    }
 
-        @Override
-        protected String doInBackground(Void... params) {
-            return uploadFile();
-        }
+    private void apicall() {
+        final String title=etTitle.getText().toString();
+        final String time=etTime.getText().toString();
+        StringRequest stringRequest = new StringRequest(Request.Method.PATCH, "http://pfd.techeasesol.com/api/v1/user/recipes/"+getRecipeId+"?api_token="+apiToken
+                +"&title="+title+"&instructions="+strInstructions+"&ingredients="+strIngredients+"&time_to_cook="+time+"&tags="+Recipe_Category
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("rest respo", response);
+                Fragment fragment=new UserListOfRecipes();
+                getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+            }
 
-        @SuppressWarnings("deprecation")
-        private String uploadFile() {
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // progressBar.setVisibility(View.INVISIBLE);
+                Log.d("error" , String.valueOf(error.getCause()));
 
-            String responseString;
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPatch httppost = new HttpPatch("http://pfd.techeasesol.com/api/v1/user/recipes/"+getRecipeId+"?api_token="+apiToken
-                    +"&title="+etTitle.getText().toString()+"&instructions="+strInstructions+"&ingredients="+strIngredients+"&time_to_cook="+etTime.getText().toString()+"&tags="+Recipe_Category);
-            try {
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity r_entity = response.getEntity();
-                int statusCode = response.getStatusLine().getStatusCode();
-                responseString = EntityUtils.toString(r_entity);
-                if (statusCode==201) {
-                    Fragment fragment=new Recipe();
-                    getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-                }
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
 
-            } catch (ClientProtocolException e) {
-                responseString = e.toString();
-               // progressBar.setVisibility(View.INVISIBLE);
-                Log.d("zmaClient",e.getCause().toString());
-//                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-//                        .setTitleText("Oops...")
-//                        .setContentText("Something went wrong!")
-//                        .show();
-            } catch (IOException e) {
-                responseString = e.toString();
-//                progressBar.setVisibility(View.INVISIBLE);
-                Log.d("zmaIo", e.getCause().toString());
-//                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
-//                        .setTitleText("Oops...")
-//                        .setContentText("Something went wrong!")
-//                        .show();
-//
- }
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+//                params.put("title",title);
+//                params.put("time_to_cook",time);
+//                params.put("instructions",strInstructions);
+//                params.put("ingredients",strIngredients);
+//                params.put("tags",Recipe_Category);
+//                params.put("api_token",apiToken);
+                return params;
+            }
 
-            Log.d("abc", responseString);
-            return responseString;
-
-        }
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
     }
 
 }

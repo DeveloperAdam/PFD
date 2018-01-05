@@ -7,26 +7,8 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="03caf5270f5f7432b80e79b5c683b479a535f824">
+        sha1="831961ba3c89aa5610dd47ee16c4274402b84155">
         <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d2fea851c5fda2b7f0f5c716edb794af8b781b89\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Adam Noor\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpclient-android\4.3.5\82edcaec6c7b4599eaeaaf11167ceea41db42f33\httpclient-android-4.3.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="82edcaec6c7b4599eaeaaf11167ceea41db42f33">
-        <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpclient-android-4.3.5_fe84956a71da779edf977038f560110019eddfea\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Adam Noor\.gradle\caches\modules-2\files-2.1\org.apache.httpcomponents\httpmime\4.3.5\1dd0d38df9c6d21e893f2e52403f1cd99e91cd81\httpmime-4.3.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="1dd0d38df9c6d21e893f2e52403f1cd99e91cd81">
-        <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10\httpmime-4.3.5_82c8c0a7b3262270cd69d92a5f9270665997b20a\classes.dex" />
     </item>
     <item
         is-multidex="true"
