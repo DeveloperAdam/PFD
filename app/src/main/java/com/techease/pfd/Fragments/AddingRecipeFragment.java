@@ -1,24 +1,24 @@
 package com.techease.pfd.Fragments;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
-import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.StrictMode;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,41 +28,30 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.HTTPMultiPartEntity;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.content.FileBody;
+import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -84,17 +73,18 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_TAKE_PHOTO=2;
     final CharSequence[] items = { "Take Photo", "Choose from Library","Cancel" };
-    String strIngredients,strInstructions,apiToken;
+    String strIngredients,strInstructions,apiToken,strTime,strTitle;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    EditText customEditText;
-    ImageView customImageView;
     String Recipe_Category;
     Bitmap bm;
     Bitmap thumbnail;
-    String imageString;
-    Service service;
+    ProgressBar progressBar;
+    int progressbarstatus = 0;
+    File destination;
     Uri uri;
+    String strImage,strId,strIng,strIns,strTag,strTimetoCook;
+
       @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,7 +93,8 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
 
           sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
           editor = sharedPreferences.edit();
-        InstructionLayout=(LinearLayout) view.findViewById(R.id.parentLayoutInstructions);
+          progressBar=(ProgressBar)view.findViewById(R.id.proressbarRecipe);
+          InstructionLayout=(LinearLayout) view.findViewById(R.id.parentLayoutInstructions);
         IngredientsLayout=(LinearLayout) view.findViewById(R.id.parentLayoutingredients);
         frameLayoutIngredients=(FrameLayout)view.findViewById(R.id.frameLayoutIngredients);
         frameLayoutInstruction=(FrameLayout)view.findViewById(R.id.frameLayoutInstructions);
@@ -152,6 +143,29 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         btnTag5.setTypeface(typeface);
         btnTag6.setTypeface(typeface);
         btnTag7.setTypeface(typeface);
+
+            //bundle data for updation and deletion
+//          strImage=getArguments().getString("img");
+//          if (strImage!=null)
+//          {
+//              btnSubmitRecipe.setText("Update Recipe");
+//              strTime=getArguments().getString("time");
+//              strTag=getArguments().getString("tag");
+//              strIns=getArguments().getString("ins");
+//              strIng=getArguments().getString("ing");
+//              strTitle=getArguments().getString("title");
+//
+//              etTitle.setText(strTitle);
+//              etTime.setText(strTime);
+//              etInstructions.setText(strIns);
+//              etIngredients.setText(strIng);
+//              Glide.with(getActivity()).load(strImage).into(imageView);
+//
+//          }
+
+
+
+
 
         apiToken=sharedPreferences.getString("api_token","");
 
@@ -238,14 +252,6 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
 
 
 
-
-        btnSubmitRecipe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
         ivCross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -258,138 +264,57 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         btnSubmitRecipe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 takeDataFromFields();
-               apicall();
+                onDataInput();
+
             }
         });
 
 
+
+
+
           return view;
-    }
-
-   private void apicalls()
-   {
-       JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.POST, Links.User_Url+"recipes?api_token="+apiToken, new Response.Listener<JSONObject>() {
-           @Override
-           public void onResponse(JSONObject response) {
-
-               Log.d("zmaRespo",response.toString());
-               Toast.makeText(getActivity(), "Your recipe is successfully uploaded", Toast.LENGTH_SHORT).show();
-
-
-           }
-       }, new Response.ErrorListener() {
-           @Override
-           public void onErrorResponse(VolleyError error) {
-               //  DialogUtils.sweetAlertDialog.dismiss();
-//                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-//                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-//                pDialog.setTitleText("Email already registered");
-//                pDialog.setContentText("Please signup with another email");
-//                pDialog.setConfirmText("OK");
-//                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                    @Override
-//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-//                        pDialog.dismissWithAnimation();
-//                    }
-//                });
-//                pDialog.show();
-               Log.d("zma error", String.valueOf(error.getCause()));
-           }
-       }) {
-           @Override
-           public String getBodyContentType() {
-               return "application/x-www-form-urlencoded;charset=UTF-8";
-           }
-
-           @Override
-           protected Map<String, String> getParams() throws AuthFailureError {
-               Map<String, String> params = new HashMap<>();
-//                params.put("dob", "1991-12-27");
-               params.put("api_token",apiToken);
-               params.put("title",etTitle.getText().toString());
-               params.put("instructions", strInstructions);
-               params.put("ingredients",strIngredients);
-               params.put("time_to_cook",etTime.getText().toString());
-               params.put("tags",Recipe_Category);
-               params.put("image",bm.toString());
-
-               Log.d("zmaParams",params.toString());
-
-               return checkParams(params);
-           }
-       };
-
-       RequestQueue mRequestQueue = Volley.newRequestQueue(getActivity());
-       stringRequest.setRetryPolicy(new
-               DefaultRetryPolicy(200000,
-               DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-               DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-       mRequestQueue.add(stringRequest);
-
-   }
-    private Map<String, String> checkParams(Map<String, String> map){
-        Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<String, String> pairs = (Map.Entry<String, String>)it.next();
-            if(pairs.getValue()==null){
-                map.put(pairs.getKey(), "");
-            }
-        }
-        return map;
-   }
-    private void apicall() {
-        final ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-        nameValuePairs.add(new BasicNameValuePair("image",convertBitmapToString(bm)));
-        nameValuePairs.add(new BasicNameValuePair("title",etTitle.getText().toString()));
-        nameValuePairs.add(new BasicNameValuePair("time_to_cook",etTime.getText().toString()));
-        nameValuePairs.add(new BasicNameValuePair("ingredients",strIngredients));
-        nameValuePairs.add(new BasicNameValuePair("instructions",strInstructions));
-        nameValuePairs.add(new BasicNameValuePair("tags",Recipe_Category));
-        try {
-            int SDK_INT = android.os.Build.VERSION.SDK_INT;
-            if (SDK_INT > 8)
-            {
-                StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder()
-                        .permitAll().build();
-                StrictMode.setThreadPolicy(policy);
-                //your codes here
-
-            }
-
-            HttpClient httpclient = new DefaultHttpClient();
-            HttpPost httppost = new HttpPost("http://pfd.techeasesol.com/api/v1/user/recipes?api_token="+apiToken);
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-            HttpResponse response = httpclient.execute(httppost);
-            String responseStr = EntityUtils.toString(response.getEntity());
-            Toast.makeText(getActivity(), "respo"+responseStr, Toast.LENGTH_SHORT).show();
-        } catch (UnsupportedEncodingException e) {
-            Toast.makeText(getActivity(), "cusr"+e.getCause().toString(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            Toast.makeText(getActivity(), "client"+e.getCause().toString(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        } catch (IOException e) {
-            Toast.makeText(getActivity(), "io exception"+e.getCause().toString(), Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
 
     }
 
-    private String convertBitmapToString(Bitmap bitmap) {
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream); //compress to which format you want.
-        byte[] byte_arr = stream.toByteArray();
-       String imagePath = Base64.encodeToString(byte_arr,Base64.DEFAULT);
-        return imagePath;
-    }
+    private void onDataInput() {
+          strTime=etTime.getText().toString();
+          strTitle=etTitle.getText().toString();
+          if (strTitle.equals(""))
+          {
+              etTitle.setError("Please enter the title");
+          }
+          else
+              if (strTime.equals(""))
+              {
+              etTime.setError("Please enter time to cook");
+          }
+          else
+              if (strIngredients.equals(""))
+              {
+                  etIngredients.setError("Please enter ingredients");
+              }
+              else
+                  if (strInstructions.equals(""))
+                  {
+                      etInstructions.setError("Please enter instructions");
+                  }
+                    else
+                    {
+                        progressBar.setVisibility(View.VISIBLE);
+                        setProgressValue(progressbarstatus);
+                        UploadFileToServer uploadFileToServer=new UploadFileToServer();
+                        uploadFileToServer.execute();
+                    }
 
+    }
 
     private void callGallery() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_PICK);
-        //intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"),REQUEST_TAKE_PHOTO);
     }
 
@@ -419,7 +344,7 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
          thumbnail = (Bitmap) data.getExtras().get("data");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         thumbnail.compress(Bitmap.CompressFormat.JPEG, 90, bytes);
-        File destination = new File(Environment.getExternalStorageDirectory(),
+        destination = new File(Environment.getExternalStorageDirectory(),
                 System.currentTimeMillis() + ".jpg");
         FileOutputStream fo;
         try {
@@ -441,20 +366,29 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         if (data != null) {
             try {
                 bm = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                bm.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-                byte[] imageBytes = baos.toByteArray();
-                imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-                Log.d("zmaString",imageString);
+                String picpath=getPath(uri);
+                destination=new File(picpath);
+
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(getActivity(), e.getCause().toString(), Toast.LENGTH_SHORT).show();
             }
-            imageView.setImageBitmap(bm);
         }
     }
 
-    @SuppressLint("ResourceAsColor")
+    private String getPath(Uri uri) {
+        String[] projection = {MediaStore.Images.Media.DATA};
+        Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+        cursor.moveToFirst();
+        int columnIndex = cursor.getColumnIndex(projection[0]);
+        String filePath = cursor.getString(columnIndex);
+        imageView.setImageBitmap(BitmapFactory.decodeFile(filePath));
+        return cursor.getString(column_index);
+    }
+
+
+  //  @SuppressLint("ResourceAsColor")
     @Override
     public void onClick(View v) {
         switch(v.getId()){
@@ -469,24 +403,31 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
                 break;
             case R.id.btnTag1:
                 Recipe_Category="Fast-Food";
+                Toast.makeText(getActivity(), "Recipe Category FastFood is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag2:
                 Recipe_Category="Traditional";
+                Toast.makeText(getActivity(), "Recipe Category Traditional is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag3:
                 Recipe_Category="Afghani";
+                Toast.makeText(getActivity(), "Recipe Category Afghani is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag4:
                 Recipe_Category="Chinese";
+                Toast.makeText(getActivity(), "Recipe Category Chinese is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag5:
                 Recipe_Category="Sweets";
+                Toast.makeText(getActivity(), "Recipe Category Sweets is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag6:
                 Recipe_Category="Baking";
+                Toast.makeText(getActivity(), "Recipe Category Baking is selected ", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnTag7:
                 Recipe_Category="Italian";
+                Toast.makeText(getActivity(), "Recipe Category Italian is selected ", Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -561,6 +502,7 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         strInstructions = "";
         for (EditText etIngred : ingredientList) {
             strIngredients += etIngred.getText().toString() + ",";
+            Log.d("zmaData",etIngred.getText().toString());
         }
         for (EditText etInstruc : instructionList) {
             strInstructions += etInstruc.getText().toString() + ",";
@@ -631,5 +573,102 @@ public class AddingRecipeFragment extends Fragment implements View.OnClickListen
         IngredientsLayout.addView(frameLayout);
         ingredientList.add(editText);
     }
+    class UploadFileToServer extends AsyncTask<Void, Integer, String> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... progress) {
+
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+            return uploadFile();
+        }
+
+        @SuppressWarnings("deprecation")
+        private String uploadFile() {
+
+            String responseString;
+            HttpClient httpclient = new DefaultHttpClient();
+            HttpPost httppost = new HttpPost(Links.User_Url +"recipes?api_token="+apiToken);
+            try {
+                HTTPMultiPartEntity entity = new HTTPMultiPartEntity(
+                        new HTTPMultiPartEntity.ProgressListener() {
+
+                            @Override
+                            public void transferred(long num) {
+                                publishProgress((int) ((num / (float) 100) * 100));
+                            }
+                        });
+                // Adding file data to http body
+                // Extra parameters if you want to pass to server
+                entity.addPart("image", new FileBody(destination));
+                Looper.prepare();
+                entity.addPart("title", new StringBody(etTitle.getText().toString()));
+                entity.addPart("instructions", new StringBody(strInstructions));
+                entity.addPart("ingredients", new StringBody(strIngredients));
+                entity.addPart("time_to_cook", new StringBody(etTime.getText().toString()));
+                entity.addPart("tags", new StringBody(Recipe_Category));
+                entity.addPart("api_token", new StringBody(apiToken));
+//                     pDialog.dismiss();
+                Bundle args = new Bundle();
+
+                httppost.setEntity(entity);
+                // Making server call
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity r_entity = response.getEntity();
+                int statusCode = response.getStatusLine().getStatusCode();
+                responseString = EntityUtils.toString(r_entity);
+                if (statusCode==201) {
+                    Fragment fragment=new Recipe();
+                    getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+                }
+
+            } catch (ClientProtocolException e) {
+                responseString = e.toString();
+                progressBar.setVisibility(View.INVISIBLE);
+                Log.d("zmaClient",e.getCause().toString());
+//                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+//                        .setTitleText("Oops...")
+//                        .setContentText("Something went wrong!")
+//                        .show();
+            } catch (IOException e) {
+                responseString = e.toString();
+                   progressBar.setVisibility(View.INVISIBLE);
+                Log.d("zmaIo", e.getCause().toString());
+//                new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+//                        .setTitleText("Oops...")
+//                        .setContentText("Something went wrong!")
+//                        .show();
+            }
+
+            Log.d("zma return string", responseString);
+            return responseString;
+
+        }
+    }
+
+    private void setProgressValue(final int progressbarstatus) {
+        // set the progress
+        progressBar.setProgress(progressbarstatus);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progressbarstatus + 10);
+            }
+        });
+        thread.start();
+    }
+
 
 }

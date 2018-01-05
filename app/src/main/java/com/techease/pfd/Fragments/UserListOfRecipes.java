@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.techease.pfd.Adapters.ListOfRecipeAdapter;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Controller.ListOfRecipeModel;
@@ -45,6 +48,7 @@ public class UserListOfRecipes extends Fragment {
     SharedPreferences.Editor editor;
     ProgressBar progressBar;
     int progressbarstatus = 0;
+    MaterialSearchBar searchView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,6 +57,8 @@ public class UserListOfRecipes extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+        searchView=(MaterialSearchBar) view.findViewById(R.id.sv3);
+        searchEducationList();
         api_token=sharedPreferences.getString("api_token","");
         progressBar=(ProgressBar)view.findViewById(R.id.progressbarListofRecipe);
         recyclerView=(RecyclerView)view.findViewById(R.id.rvUserListOfRecipes);
@@ -63,7 +69,34 @@ public class UserListOfRecipes extends Fragment {
         recyclerView.setAdapter(listOfRecipeAdapter);
         return view;
     }
+    private void searchEducationList() {
+        searchView.addTextChangeListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence query, int i, int i1, int i2) {
+                Log.d("LOG_TAG", getClass().getSimpleName() + " text changed " + searchView.getText());
+
+                query = query.toString().toLowerCase();
+                List<ListOfRecipeModel> newData = new ArrayList<>();
+                for (int j = 0; j < listOfRecipeModels.size(); j++) {
+                    final String test2 = listOfRecipeModels.get(j).getRecipeName().toLowerCase();
+                    if (test2.startsWith(String.valueOf(query))) {
+                        newData.add(listOfRecipeModels.get(j));
+                    }
+                }
+                listOfRecipeAdapter = new ListOfRecipeAdapter(getActivity(), newData);
+                recyclerView.setAdapter(listOfRecipeAdapter);
+                listOfRecipeAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
     private void apicall() {
         progressBar.setVisibility(View.VISIBLE);
         setProgressValue(progressbarstatus);
@@ -72,7 +105,9 @@ public class UserListOfRecipes extends Fragment {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
+
                 try {
+                    listOfRecipeModels.clear();
                     JSONObject jsonObject=new JSONObject(response);
                     JSONArray jsonArr=jsonObject.getJSONArray("data");
                     for (int i=0; i<jsonArr.length(); i++)
@@ -121,7 +156,14 @@ public class UserListOfRecipes extends Fragment {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        apicall();
+        listOfRecipeAdapter=new ListOfRecipeAdapter(getActivity(),listOfRecipeModels);
+        recyclerView.setAdapter(listOfRecipeAdapter);
 
+    }
     private void setProgressValue(final int progress) {
 
         // set the progress

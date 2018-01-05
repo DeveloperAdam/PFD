@@ -2,8 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="com.techease.pfd.Fragments.UserListOfRecipes">
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        app:mt_speechMode="true"
+        android:searchIcon="@drawable/target"
+        app:mt_maxSuggestionsCount="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/sv3" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

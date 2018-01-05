@@ -87,7 +87,7 @@ public class Setting extends Fragment {
         AccessToken accessToken=AccessToken.getCurrentAccessToken();
         //accessToken=sharedPreferences.getString("accesstoken","");
         String fb=sharedPreferences.getString("fb","");
-        if (fb.equals(""))
+        if (fb!=null)
         {
             Toast.makeText(getActivity(), "You have to login through facebook", Toast.LENGTH_SHORT).show();
         }

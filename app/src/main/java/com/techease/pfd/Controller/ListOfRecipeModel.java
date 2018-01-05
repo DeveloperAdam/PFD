@@ -10,6 +10,28 @@ public class ListOfRecipeModel {
     private  String RecipeName;
     private  String RecipeCatgory;
     private  String RecipeTime;
+    private String RecipeIns;
+    private String RecipeIng;
+    private String RecipeImage;
+
+    public String getRecipeIns() {
+        return RecipeIns;
+    }
+
+    public void setRecipeIns(String recipeIns) {
+        RecipeIns = recipeIns;
+    }
+
+    public String getRecipeIng() {
+        return RecipeIng;
+    }
+
+    public void setRecipeIng(String recipeIng) {
+        RecipeIng = recipeIng;
+    }
+
+
+
 
     public String getRecipeImage() {
         return RecipeImage;
@@ -19,7 +41,7 @@ public class ListOfRecipeModel {
         RecipeImage = recipeImage;
     }
 
-    private String RecipeImage;
+
 
     public String getId() {
         return id;

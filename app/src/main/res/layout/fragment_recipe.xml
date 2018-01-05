@@ -6,30 +6,20 @@
     android:orientation="vertical"
     tools:context="com.techease.pfd.Fragments.Recipe">
 
-    <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        app:layout_scrollFlags="scroll|enterAlways"
-        android:background="#129FDD"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginTop="5sp"
-        android:textAlignment="center"
-        android:layout_height="wrap_content">
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayoutRecipe"
             android:layout_width="match_parent"
-            android:layout_height="50sp"
+            android:layout_height="40sp"
             app:tabGravity="fill"
             app:tabMode="fixed"
+            android:background="@color/colorPrimary"
             android:layout_gravity="center"
             app:tabTextColor="#BDBDBD"
             app:tabPaddingStart="20sp"
             app:tabSelectedTextColor="#fff"
             app:tabIndicatorColor="#eee"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
-    </android.support.design.widget.AppBarLayout>
 
 <FrameLayout
     android:layout_width="match_parent"

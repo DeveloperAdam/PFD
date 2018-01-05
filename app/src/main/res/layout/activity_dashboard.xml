@@ -24,27 +24,27 @@
         app:headerLayout="@layout/nav_header_dashboard"
         app:menu="@menu/activity_dashboard_drawer" >
 
-        <RelativeLayout
-            android:layout_width="200sp"
-            android:layout_height="match_parent">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="200sp"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <View
-                android:layout_width="30sp"
-                android:layout_height="3sp"
-                android:layout_marginLeft="10sp"
-                android:layout_marginTop="150sp"
-                android:background="#BDBDBD"
+            <!--<View-->
+                <!--android:layout_width="30sp"-->
+                <!--android:layout_height="3sp"-->
+                <!--android:layout_marginLeft="10sp"-->
+                <!--android:layout_marginTop="150sp"-->
+                <!--android:background="#BDBDBD"-->
 
-                />
+                <!--/>-->
 
-            <View
-                android:layout_width="30sp"
-                android:layout_height="3sp"
-                android:background="#BDBDBD"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="90sp"
-                android:layout_marginLeft="10sp"
-                />
+            <!--<View-->
+                <!--android:layout_width="30sp"-->
+                <!--android:layout_height="3sp"-->
+                <!--android:background="#BDBDBD"-->
+                <!--android:layout_alignParentBottom="true"-->
+                <!--android:layout_marginLeft="10sp"-->
+                <!--/>-->
+        <!--</RelativeLayout>-->
 
             <ImageView
                 android:layout_width="110sp"
@@ -64,6 +64,6 @@
                 android:layout_gravity="bottom|center"
                 android:text="TECHEASE SOLUTIONS"
                 android:textColor="#f2f2f2" />
-        </RelativeLayout>
+
     </android.support.design.widget.NavigationView>
 </android.support.v4.widget.DrawerLayout>
