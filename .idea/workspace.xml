@@ -16,482 +16,26 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="zma" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="err" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="913971df-2cae-40a8-a471-635b252f126b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AUTH.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthOption.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthProtocolState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthSchemeProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthSchemeRegistry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthScope.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/AuthenticationException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/BasicUserPrincipal.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/ChallengeState.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/ContextAwareAuthScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/Credentials.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/InvalidCredentialsException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/MalformedChallengeException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/NTCredentials.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/NTUserPrincipal.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/UsernamePasswordCredentials.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/params/AuthPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/params/AuthParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/auth/params/AuthParams.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/AuthCache.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/AuthenticationHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/AuthenticationStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/BackoffManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/CircularRedirectException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/ClientProtocolException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/ConnectionBackoffStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/CookieStore.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/CredentialsProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/HttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/HttpRequestRetryHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/HttpResponseException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/NonRepeatableRequestException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/RedirectException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/RedirectHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/RedirectStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/RequestDirector.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/ResponseHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/ServiceUnavailableRetryStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/UserTokenHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/config/AuthSchemes.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/config/CookieSpecs.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/config/RequestConfig.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/DecompressingEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/DeflateDecompressingEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/DeflateInputStream.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/EntityBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/GzipCompressingEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/GzipDecompressingEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/LazyDecompressingInputStream.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/entity/UrlEncodedFormEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/AbortableHttpRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/AbstractExecutionAwareRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/CloseableHttpResponse.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/Configurable.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpDelete.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpEntityEnclosingRequestBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpExecutionAware.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpGet.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpHead.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpOptions.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpPatch.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpPost.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpPut.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpRequestBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpRequestWrapper.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpTrace.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/HttpUriRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/methods/RequestBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/AllClientPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/AuthPolicy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/ClientPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/ClientParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/CookiePolicy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/HttpClientParamConfig.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/params/HttpClientParams.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/ClientContext.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/ClientContextConfigurer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/HttpClientContext.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestAcceptEncoding.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestAddCookies.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestAuthCache.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestAuthenticationBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestClientConnControl.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestDefaultHeaders.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestExpectContinue.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestProxyAuthentication.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/RequestTargetAuthentication.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/ResponseAuthCache.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/ResponseContentEncoding.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/protocol/ResponseProcessCookies.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/CloneUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/DateUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/HttpClientUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/Idn.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/JdkIdn.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/Punycode.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/Rfc3492Idn.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/URIBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/URIUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/utils/URLEncodedUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/BasicEofSensorWatcher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/BasicManagedEntity.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ClientConnectionManagerFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ClientConnectionOperator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ClientConnectionRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ConnectTimeoutException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ConnectionKeepAliveStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ConnectionPoolTimeoutException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ConnectionReleaseTrigger.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ConnectionRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/DnsResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/EofSensorInputStream.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/EofSensorWatcher.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/HttpClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/HttpConnectionFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/HttpHostConnectException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/HttpInetSocketAddress.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/HttpRoutedConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ManagedClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ManagedHttpClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/MultihomePlainSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/OperatedClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/SchemePortResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/UnsupportedSchemeException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnConnectionPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnConnectionParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnManagerPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnManagerParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnManagerParams.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnPerRoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnPerRouteBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnRoutePNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnRouteParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/params/ConnRouteParams.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/BasicRouteDirector.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/HttpRoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/HttpRouteDirector.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/HttpRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/RouteInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/routing/RouteTracker.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/HostNameResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/LayeredSchemeSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/LayeredSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/LayeredSocketFactoryAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/PlainSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/Scheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeLayeredSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeLayeredSocketFactoryAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeLayeredSocketFactoryAdaptor2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeRegistry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SchemeSocketFactoryAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/scheme/SocketFactoryAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/socket/ConnectionSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/socket/LayeredConnectionSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/socket/PlainConnectionSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/AbstractVerifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/AllowAllHostnameVerifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/BrowserCompatHostnameVerifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/PrivateKeyDetails.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/PrivateKeyStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/SSLConnectionSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/SSLContextBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/SSLContexts.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/SSLInitializationException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/SSLSocketFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/StrictHostnameVerifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/TrustSelfSignedStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/TrustStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/ssl/X509HostnameVerifier.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/conn/util/InetAddressUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/ClientCookie.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/Cookie.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieIdentityComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieOrigin.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookiePathComparator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieRestrictionViolationException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieSpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieSpecProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/CookieSpecRegistry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/MalformedCookieException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/SM.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/SetCookie.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/SetCookie2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/params/CookieSpecPNames.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/cookie/params/CookieSpecParamBean.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/AuthSchemeBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/BasicScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/BasicSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/DigestScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/DigestSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/GGSSchemeBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/HttpAuthenticator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/HttpEntityDigester.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/KerberosScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/KerberosSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NTLMEngine.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NTLMEngineException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NTLMEngineImpl.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NTLMScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NTLMSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NegotiateScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/NegotiateSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/RFC2617Scheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/SPNegoScheme.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/SPNegoSchemeFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/SpnegoTokenGenerator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/auth/UnsupportedDigestAlgorithmException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AIMDBackoffManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AbstractAuthenticationHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AbstractHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AuthenticationStrategyAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AuthenticationStrategyImpl.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/AutoRetryHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/BasicAuthCache.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/BasicCookieStore.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/BasicCredentialsProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/BasicResponseHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/ClientParamsStack.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/Clock.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/CloseableHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/CloseableHttpResponseProxy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/ContentEncodingHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DecompressingHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultBackoffStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultConnectionKeepAliveStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultHttpRequestRetryHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultProxyAuthenticationHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultRedirectHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultRedirectStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultRedirectStrategyAdaptor.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultRequestDirector.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultServiceUnavailableRetryStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultTargetAuthenticationHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/DefaultUserTokenHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/EntityEnclosingRequestWrapper.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/FutureRequestExecutionMetrics.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/FutureRequestExecutionService.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/HttpAuthenticator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/HttpClientBuilder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/HttpClients.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/HttpRequestFutureTask.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/HttpRequestTaskCallable.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/InternalHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/LaxRedirectStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/MinimalHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/NoopUserTokenHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/NullBackoffStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/ProxyAuthenticationStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/ProxyClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/RedirectLocations.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/RequestWrapper.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/RoutedRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/StandardHttpRequestRetryHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/SystemClock.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/SystemDefaultCredentialsProvider.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/SystemDefaultHttpClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/TargetAuthenticationStrategy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/client/TunnelRefusedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/AbstractClientConnAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/AbstractPoolEntry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/AbstractPooledConnAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/BasicClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/BasicHttpClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/CPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/CPoolEntry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/CPoolProxy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/ConnectionShutdownException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultClientConnectionOperator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultHttpResponseParser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultHttpResponseParserFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultHttpRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultManagedHttpClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultProxyRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultResponseParser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/DefaultSchemePortResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/HttpClientConnectionOperator.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/HttpConnPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/HttpPoolEntry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/IdleConnectionHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/InMemoryDnsResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/LoggingInputStream.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/LoggingManagedHttpClientConnection.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/LoggingOutputStream.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/LoggingSessionInputBuffer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/LoggingSessionOutputBuffer.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/ManagedClientConnectionImpl.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/ManagedHttpClientConnectionFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/PoolingClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/PoolingHttpClientConnectionManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/ProxySelectorRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/SchemeRegistryFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/SingleClientConnManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/SystemDefaultDnsResolver.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/SystemDefaultRoutePlanner.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/Wire.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/AbstractConnPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/BasicPoolEntry.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/BasicPoolEntryRef.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/BasicPooledConnAdapter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/ConnPoolByRoute.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/PoolEntryRequest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/RouteSpecificPool.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/ThreadSafeClientConnManager.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/WaitingThread.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/conn/tsccm/WaitingThreadAborter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/AbstractCookieAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/AbstractCookieSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicClientCookie.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicClientCookie2.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicCommentHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicDomainHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicExpiresHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicMaxAgeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicPathHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BasicSecureHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BestMatchSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BestMatchSpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BrowserCompatSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BrowserCompatSpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/BrowserCompatVersionAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/CookieSpecBase.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/DateParseException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/DateUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/IgnoreSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/IgnoreSpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/NetscapeDomainHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/NetscapeDraftHeaderParser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/NetscapeDraftSpec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/NetscapeDraftSpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/PublicSuffixFilter.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/PublicSuffixListParser.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2109DomainHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2109Spec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2109SpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2109VersionHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965CommentUrlAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965DiscardAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965DomainAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965PortAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965Spec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965SpecFactory.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/cookie/RFC2965VersionAttributeHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/BackoffStrategyExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/ClientExecChain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/ConnectionHolder.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/HttpResponseProxy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/MainClientExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/MinimalClientExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/ProtocolExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/RedirectExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/RequestAbortedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/RequestEntityProxy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/ResponseEntityProxy.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/RetryExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/ServiceUnavailableRetryExec.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/impl/execchain/TunnelRefusedException.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_httpcomponents_httpclient_android_4_3_5_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_apache_httpcomponents_httpmime_4_3_5_jar.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/DEPENDENCIES" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/LICENSE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/MANIFEST.MF" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/NOTICE" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/maven/org.apache.httpcomponents/httpclient/pom.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/META-INF/maven/org.apache.httpcomponents/httpclient/pom.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/lib/http/client/version.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Utils/HTTPMultiPartEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_by_id.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-01-44-004.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-03-28-761.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-25-26-674.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-25-39-320.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-28-05-240.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-28-14-406.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-51-04-416.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-52-08-996.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-55-44-044.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-11-56-12-463.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-20-00-489.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-20-45-395.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-21-58-449.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-22-39-587.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-35-22-167.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-36-08-395.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-50-53-762.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-51-18-916.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-12-57-30-482.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-02-39-664.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-05-15-736.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-13-07-671.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-14-45-191.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-21-41-659.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-48-33-032.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-50-16-872.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-13-52-29-763.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-02-29-314.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-05-15-603.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-09-52-338.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-22-14-566.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-34-23-961.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-51-11-705.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-14-59-10-379.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-09-39-454.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-12-54-626.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-24-20-457.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-45-53-948.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-51-16-364.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-52-28-996.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-53-11-071.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-15-55-35-786.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-04-16-356.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-05-36-509.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-06-45-138.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-07-49-503.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-08-58-418.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-10-33-594.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-12-03-606.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-13-50-433.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-31-30-256.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-35-32-469.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-39-15-748.rawproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/android-profile/profile-2018-01-03-16-45-39-823.rawproto" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/annotation-processors.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileContent/annotation-processors.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileContent/fileContent.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/jarAnalysis.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskJars.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/generated/mockable-android-25.jar" afterPath="$PROJECT_DIR$/build/generated/mockable-android-25.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/build.gradle" afterPath="$PROJECT_DIR$/app/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Controller/ListOfRecipeModel.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Controller/ListOfRecipeModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/ListOfRecipesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/ListOfRecipesFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/Setting.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/Setting.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UserListOfRecipes.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UserListOfRecipes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/drawable/tags_btn.xml" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tags_btn.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_list_of_recipes.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/custom_list_of_recipes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_adding_recipe.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_adding_recipe.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_of_recipes.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_of_recipes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_list_of_recipes.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_list_of_recipes.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" afterPath="$PROJECT_DIR$/build/intermediates/dex-cache/cache.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml" />
     </list>
     <ignored path="PFD.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -536,42 +80,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AddingRecipeFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1989">
-              <caret line="352" column="30" lean-forward="false" selection-start-line="352" selection-start-column="30" selection-end-line="352" selection-end-column="30" />
-              <folding>
-                <element signature="e#7593#8272#0" expanded="true" />
-                <element signature="e#8271#8272#0" expanded="true" />
-                <marker date="1515085831009" expanded="true" signature="13515:13961" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ListOfRecipeAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
-              <folding>
-                <element signature="e#4547#5140#0" expanded="true" />
-                <element signature="e#5139#5140#0" expanded="true" />
-                <element signature="e#5192#6173#0" expanded="true" />
-                <element signature="e#5481#6069#0" expanded="true" />
-                <element signature="e#6068#6069#0" expanded="true" />
-                <element signature="e#6172#6173#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UpdateReicpeFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="606" column="83" lean-forward="false" selection-start-line="606" selection-start-column="83" selection-end-line="606" selection-end-column="83" />
+            <state relative-caret-position="435">
+              <caret line="314" column="48" lean-forward="true" selection-start-line="314" selection-start-column="48" selection-end-line="314" selection-end-column="48" />
+              <folding>
+                <element signature="e#9392#9578#0" expanded="true" />
+                <element signature="e#9577#9578#0" expanded="true" />
+                <element signature="e#12974#13297#0" expanded="true" />
+                <element signature="e#13296#13297#0" expanded="true" />
+                <element signature="e#18044#18644#0" expanded="true" />
+                <element signature="e#18643#18644#0" expanded="true" />
+                <element signature="e#20930#21528#0" expanded="true" />
+                <element signature="e#21527#21528#0" expanded="true" />
+                <element signature="e#22028#22060#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AllResturentFrag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AllResturentFrag.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="122" column="5" lean-forward="false" selection-start-line="122" selection-start-column="5" selection-end-line="190" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="fragment_update_reicpe.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml">
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="256" column="27" lean-forward="false" selection-start-line="256" selection-start-column="27" selection-end-line="256" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -601,6 +147,9 @@
       <find>etIngred</find>
       <find>PFDmodels</find>
       <find>destination</find>
+      <find>getId</find>
+      <find>imageview</find>
+      <find>ivCross</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -2756,7 +2305,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_by_id.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_user_list_of_recipes.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_list_of_recipes.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UserListOfRecipes.java" />
@@ -2765,11 +2313,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Controller/ListOfRecipeModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/ListOfRecipesFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_list_of_recipes.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/Setting.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java" />
       </list>
     </option>
   </component>
@@ -2797,73 +2346,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2940,52 +2422,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pfd" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
+              <option name="myItemId" value="PFD" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="PFD" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PFD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PFD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidSourceTypeNode" />
+              <option name="myItemId" value="PFD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="pfd" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidPsiDirectoryNode" />
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Adapters" />
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PFD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PFD" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2998,6 +2503,7 @@
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="show.do.not.ask.upgrade.gradle.plugin" value="2.3.3" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -3106,7 +2612,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515130028442" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515147764495" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -3154,7 +2660,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515130028442" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515147764495" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -3337,7 +2843,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515130028445" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1515147764496" />
       </method>
     </configuration>
     <list size="1">
@@ -3379,34 +2885,32 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.50680786" order="11" side_tool="true" content_ui="tabs" />
-      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30375427" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3088737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.49319214" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.50680786" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31770045" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34300342" sideWeight="0.49546143" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3327645" sideWeight="0.49546143" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30375427" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24054463" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24962063" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3088737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -3415,7 +2919,9 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Documentation" active="false" anchor="right" auto_hide="true" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="544" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935154" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3584,7 +3090,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3608,9 +3113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="56" lean-forward="false" selection-start-line="11" selection-start-column="56" selection-end-line="11" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3621,7 +3123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="45" lean-forward="true" selection-start-line="11" selection-start-column="45" selection-end-line="11" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3632,7 +3133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="41" lean-forward="false" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3640,7 +3140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="51" column="44" lean-forward="false" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3651,7 +3150,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="40" lean-forward="false" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3670,7 +3168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="3" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="20" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3678,18 +3175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="27" column="47" lean-forward="false" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_by_id.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1220">
-          <caret line="131" column="10" lean-forward="false" selection-start-line="131" selection-start-column="10" selection-end-line="131" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3724,9 +3209,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
           <caret line="24" column="3" lean-forward="true" selection-start-line="24" selection-start-column="3" selection-end-line="24" selection-end-column="3" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3737,7 +3219,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="13" column="28" lean-forward="false" selection-start-line="13" selection-start-column="28" selection-end-line="13" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3745,15 +3226,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/BestDealAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3780,7 +3252,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3799,7 +3270,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="26" column="7" lean-forward="false" selection-start-line="26" selection-start-column="7" selection-end-line="46" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3807,7 +3277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="44" column="43" lean-forward="true" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3818,7 +3287,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3826,16 +3294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#400#401#0" expanded="true" />
-            <element signature="e#450#451#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#555#556#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3854,26 +3312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="281" column="48" lean-forward="true" selection-start-line="281" selection-start-column="48" selection-end-line="281" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml">
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="291" column="0" lean-forward="false" selection-start-line="291" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="39" column="30" lean-forward="true" selection-start-line="39" selection-start-column="30" selection-end-line="39" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3884,42 +3322,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AllResturentFrag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
-          <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1989">
-          <caret line="352" column="30" lean-forward="false" selection-start-line="352" selection-start-column="30" selection-end-line="352" selection-end-column="30" />
-          <folding>
-            <element signature="e#7593#8272#0" expanded="true" />
-            <element signature="e#8271#8272#0" expanded="true" />
-            <marker date="1515085831009" expanded="true" signature="13515:13961" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="199" column="0" lean-forward="false" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
-          <folding>
-            <element signature="e#4547#5140#0" expanded="true" />
-            <element signature="e#5139#5140#0" expanded="true" />
-            <element signature="e#5192#6173#0" expanded="true" />
-            <element signature="e#5481#6069#0" expanded="true" />
-            <element signature="e#6068#6069#0" expanded="true" />
-            <element signature="e#6172#6173#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3931,11 +3333,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/BestDealAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="69" column="95" lean-forward="false" selection-start-line="69" selection-start-column="95" selection-end-line="69" selection-end-column="95" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2538#2539#0" expanded="false" />
+            <element signature="e#2578#2579#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Adapters/ListOfRecipeAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="134" column="18" lean-forward="true" selection-start-line="134" selection-start-column="18" selection-end-line="134" selection-end-column="18" />
+          <folding>
+            <element signature="e#4818#4819#0" expanded="false" />
+            <element signature="e#4843#4844#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/RecipeByIdFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="153" column="50" lean-forward="true" selection-start-line="153" selection-start-column="50" selection-end-line="153" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_by_id.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="38" column="39" lean-forward="false" selection-start-line="38" selection-start-column="39" selection-end-line="38" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AddingRecipeFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="977">
+          <caret line="652" column="5" lean-forward="false" selection-start-line="652" selection-start-column="5" selection-end-line="652" selection-end-column="5" />
+          <folding>
+            <marker date="1515085831009" expanded="true" signature="13515:13961" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_update_reicpe.xml">
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="256" column="27" lean-forward="false" selection-start-line="256" selection-start-column="27" selection-end-line="256" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/AllResturentFrag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="122" column="5" lean-forward="false" selection-start-line="122" selection-start-column="5" selection-end-line="190" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/techease/pfd/Fragments/UpdateReicpeFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="606" column="83" lean-forward="false" selection-start-line="606" selection-start-column="83" selection-end-line="606" selection-end-column="83" />
-          <folding />
+        <state relative-caret-position="435">
+          <caret line="314" column="48" lean-forward="true" selection-start-line="314" selection-start-column="48" selection-end-line="314" selection-end-column="48" />
+          <folding>
+            <element signature="e#9392#9578#0" expanded="true" />
+            <element signature="e#9577#9578#0" expanded="true" />
+            <element signature="e#12974#13297#0" expanded="true" />
+            <element signature="e#13296#13297#0" expanded="true" />
+            <element signature="e#18044#18644#0" expanded="true" />
+            <element signature="e#18643#18644#0" expanded="true" />
+            <element signature="e#20930#21528#0" expanded="true" />
+            <element signature="e#21527#21528#0" expanded="true" />
+            <element signature="e#22028#22060#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

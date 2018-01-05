@@ -47,6 +47,11 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
     List<ListOfRecipeModel> models;
     Context context;
     String strTitle,strTime,strTag,strIns,strIng,strId,strImage;
+    String  api_token;
+    String recipeId;
+    final CharSequence[] items = {"Update", "Delete", "Cancel"};
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     public ListOfRecipeAdapter(Context context, List<ListOfRecipeModel> listOfRecipeModels) {
         this.context=context;
@@ -60,8 +65,13 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
     }
 
     @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
         final ListOfRecipeModel model=models.get(position);
+
+        sharedPreferences = context.getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        api_token=sharedPreferences.getString("api_token","");
+
 
         holder.tvRecipeName.setText(model.getRecipeName());
         holder.tvRecipeTime.setText(model.getRecipeTime());
@@ -77,10 +87,95 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
         strId=model.getId();
         strImage=model.getRecipeImage();
 
+       holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+           @Override
+           public boolean onLongClick(View v) {
+               recipeId= model.getId();
+               AlertDialog.Builder builder = new AlertDialog.Builder(context);
+               builder.setTitle("Select");
+               builder.setItems(items, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       if (items[which].equals("Update")) {
+                           UpdateRecipe();
+                       } else if (items[which].equals("Delete")) {
+                           DeleteRecipe();
+                       } else if (items[which].equals("Cancel")) {
+                           dialog.dismiss();
+                       }
+
+                   }
+               });
+               builder.show();
+               return true;
+           }
+       });
+
 
     }
 
+    private void UpdateRecipe() {
+        Bundle bundle = new Bundle();
+        bundle.putString("title", strTitle);
+        bundle.putString("id", recipeId);
+        bundle.putString("img", strImage);
+        bundle.putString("ing", strIng);
+        bundle.putString("ins", strIns);
+        bundle.putString("tag", strTag);
+        bundle.putString("time", strTime);
+        Fragment fragment = new UpdateReicpeFragment();
+        fragment.setArguments(bundle);
+        ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack("abc").commit();
 
+
+    }
+
+    private void DeleteRecipe()
+    {
+        apicall();
+    }
+
+    private void apicall() {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, "http://pfd.techeasesol.com/api/v1/user/recipes/" + recipeId +
+                "?api_token=" + api_token
+                , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("res", response);
+
+                Fragment fragment=new ListOfRecipesFragment();
+                ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+                Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+
+
+            }
+
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                // progressBar.setVisibility(View.INVISIBLE);
+                Log.d("error", String.valueOf(error.getCause()));
+
+            }
+        }) {
+            @Override
+            public String getBodyContentType() {
+                return "application/x-www-form-urlencoded;charset=UTF-8";
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                return params;
+            }
+
+        };
+        RequestQueue mRequestQueue = Volley.newRequestQueue(context);
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        mRequestQueue.add(stringRequest);
+    }
 
     @Override
     public int getItemCount() {
@@ -128,30 +223,30 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
                 }
             });
 
-            linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
-                @Override
-                public boolean onLongClick(View v) {
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    builder.setTitle("Select");
-                    builder.setItems(items, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            if (items[which].equals("Update")) {
-                                UpdateRecipe();
-                            } else if (items[which].equals("Delete")) {
-                                DeleteRecipe();
-                            } else if (items[which].equals("Cancel")) {
-                                dialog.dismiss();
-                            }
-
-                        }
-                    });
-                    builder.show();
-                    return true;
-
-                }
-            });
+//            linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
+//                @Override
+//                public boolean onLongClick(View v) {
+//
+//                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                    builder.setTitle("Select");
+//                    builder.setItems(items, new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            if (items[which].equals("Update")) {
+//                                UpdateRecipe();
+//                            } else if (items[which].equals("Delete")) {
+//                                DeleteRecipe();
+//                            } else if (items[which].equals("Cancel")) {
+//                                dialog.dismiss();
+//                            }
+//
+//                        }
+//                    });
+//                    builder.show();
+//                    return true;
+//
+//                }
+//            });
 //
         }
 
@@ -166,71 +261,71 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
 
         }
 
-        private void UpdateRecipe() {
-            Bundle bundle = new Bundle();
-            bundle.putString("title", strTitle);
-            bundle.putString("id", strId);
-            bundle.putString("img", strImage);
-            bundle.putString("ing", strIng);
-            bundle.putString("ins", strIns);
-            bundle.putString("tag", strTag);
-            bundle.putString("time", strTime);
-            Fragment fragment = new UpdateReicpeFragment();
-            fragment.setArguments(bundle);
-            ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack("abc").commit();
-
-
-        }
-
-        private void DeleteRecipe() {
-            recipeId = tvRecipeId.getText().toString();
-            api_token = sharedPreferences.getString("api_token", "");
-            apicall();
-
-
-        }
-
-        private void apicall() {
-            StringRequest stringRequest = new StringRequest(Request.Method.DELETE, "http://pfd.techeasesol.com/api/v1/user/recipes/" + recipeId +
-                    "?api_token=" + api_token
-                    , new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Log.d("res", response);
-
-                   Fragment fragment=new ListOfRecipesFragment();
-                    ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
-                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
-
-
-                }
-
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // progressBar.setVisibility(View.INVISIBLE);
-                    Log.d("error", String.valueOf(error.getCause()));
-
-                }
-            }) {
-                @Override
-                public String getBodyContentType() {
-                    return "application/x-www-form-urlencoded;charset=UTF-8";
-                }
-
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<>();
-                    return params;
-                }
-
-            };
-            RequestQueue mRequestQueue = Volley.newRequestQueue(context);
-            stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            mRequestQueue.add(stringRequest);
-        }
+//        private void UpdateRecipe() {
+//            Bundle bundle = new Bundle();
+//            bundle.putString("title", strTitle);
+//            bundle.putString("id", strId);
+//            bundle.putString("img", strImage);
+//            bundle.putString("ing", strIng);
+//            bundle.putString("ins", strIns);
+//            bundle.putString("tag", strTag);
+//            bundle.putString("time", strTime);
+//            Fragment fragment = new UpdateReicpeFragment();
+//            fragment.setArguments(bundle);
+//            ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack("abc").commit();
+//
+//
+//        }
+//
+//        private void DeleteRecipe() {
+//            recipeId = tvRecipeId.getText().toString();
+//            api_token = sharedPreferences.getString("api_token", "");
+//            apicall();
+//
+//
+//        }
+//
+//        private void apicall() {
+//            StringRequest stringRequest = new StringRequest(Request.Method.DELETE, "http://pfd.techeasesol.com/api/v1/user/recipes/" + recipeId +
+//                    "?api_token=" + api_token
+//                    , new Response.Listener<String>() {
+//                @Override
+//                public void onResponse(String response) {
+//                    Log.d("res", response);
+//
+//                   Fragment fragment=new ListOfRecipesFragment();
+//                    ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
+//                    Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+//
+//
+//                }
+//
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//                    // progressBar.setVisibility(View.INVISIBLE);
+//                    Log.d("error", String.valueOf(error.getCause()));
+//
+//                }
+//            }) {
+//                @Override
+//                public String getBodyContentType() {
+//                    return "application/x-www-form-urlencoded;charset=UTF-8";
+//                }
+//
+//                @Override
+//                protected Map<String, String> getParams() throws AuthFailureError {
+//                    Map<String, String> params = new HashMap<>();
+//                    return params;
+//                }
+//
+//            };
+//            RequestQueue mRequestQueue = Volley.newRequestQueue(context);
+//            stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000,
+//                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//            mRequestQueue.add(stringRequest);
+//        }
 
     }
 }

@@ -87,8 +87,8 @@ public class RecipeByIdFragment extends Fragment {
     }
 
     private void apicall() {
-//        progressBar.setVisibility(View.VISIBLE);
-//        setProgressValue(progressbarstatus);
+        progressBar.setVisibility(View.VISIBLE);
+        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/user/recipes/"+recipeId+
                 "?api_token="+api_token
                 , new Response.Listener<String>() {
@@ -105,7 +105,7 @@ public class RecipeByIdFragment extends Fragment {
                         ShowTitle.setText(object.getString("title"));
                         ShowIns.setText(object.getString("instructions"));
                         Glide.with(getActivity()).load(object.getString("image_url")).into(imageView);
-                     //   progressBar.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
 
 
 
