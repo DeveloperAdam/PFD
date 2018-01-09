@@ -63,8 +63,11 @@ String email;
         {
             etEmailForgetPass.setError("Please Enter Valid Email");
         }else
+        {
             DialogUtils.showProgressSweetDialog(getActivity(), "Sending");
-        apiCall();
+            apiCall();
+        }
+
 
     }
 
@@ -73,6 +76,17 @@ String email;
             @Override
             public void onResponse(String response) {
                 DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Code sent successfully");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Bundle bundle=new Bundle();
                 bundle.putString("email",email);
                 fragment=new VerifyCodeFrag();

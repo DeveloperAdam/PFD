@@ -3,6 +3,7 @@ package com.techease.pfd.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -29,6 +30,8 @@ import com.techease.pfd.Fragments.CoupansFrag;
 import com.techease.pfd.Fragments.Recipe;
 import com.techease.pfd.Fragments.Setting;
 import com.techease.pfd.R;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class Dashboard extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -60,10 +63,9 @@ public class Dashboard extends AppCompatActivity
         sharedprefs = this.getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedprefs.edit();
         fname = sharedprefs.getString("fname", "");
-        lname=sharedprefs.getString("lname","");
         email=sharedprefs.getString("email","");
         if (fname != null) {
-            tvUserName.setText(fname+" "+lname);
+            tvUserName.setText(fname);
             tvUserEmail.setText(email);
         }
 
@@ -161,6 +163,17 @@ public class Dashboard extends AppCompatActivity
             editor.putString("api_token"," ");
             editor.putString("fb"," ").commit();
             startActivity(new Intent(Dashboard.this, MainActivity.class));
+            final SweetAlertDialog pDialog = new SweetAlertDialog(Dashboard.this, SweetAlertDialog.SUCCESS_TYPE);
+            pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+            pDialog.setTitleText("You have been logged out successfully");
+            pDialog.setConfirmText("OK");
+            pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    pDialog.dismissWithAnimation();
+                }
+            });
+            pDialog.show();
             finish();
         }
 

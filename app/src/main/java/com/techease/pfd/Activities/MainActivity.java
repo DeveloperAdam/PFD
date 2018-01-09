@@ -3,6 +3,7 @@ package com.techease.pfd.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -103,6 +106,17 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+                                    final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE);
+                                    pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                                    pDialog.setTitleText("Logged in successfully");
+                                    pDialog.setConfirmText("OK");
+                                    pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                            pDialog.dismissWithAnimation();
+                                        }
+                                    });
+                                    pDialog.show();
                                     startActivity(new Intent(MainActivity.this,Dashboard.class));
                                 }
                             });
@@ -115,16 +129,32 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancel() {
-
-                            Toast.makeText(MainActivity.this, "cancel", Toast.LENGTH_SHORT).show();
-
+                            final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
+                            pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                            pDialog.setTitleText("Error");
+                            pDialog.setConfirmText("OK");
+                            pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    pDialog.dismissWithAnimation();
+                                }
+                            });
+                            pDialog.show();
                         }
 
                         @Override
                         public void onError(FacebookException error) {
-
-                            Toast.makeText(MainActivity.this, String.valueOf(error.getCause()), Toast.LENGTH_SHORT).show();
-
+                            final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE);
+                            pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                            pDialog.setTitleText(error.getCause().toString());
+                            pDialog.setConfirmText("OK");
+                            pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                                    pDialog.dismissWithAnimation();
+                                }
+                            });
+                            pDialog.show();
                         }
                     });
 

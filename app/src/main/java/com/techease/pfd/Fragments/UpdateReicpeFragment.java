@@ -28,10 +28,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -486,24 +488,42 @@ public class UpdateReicpeFragment extends Fragment implements View.OnClickListen
     }
 
     private void apicall() {
-        final String title=etTitle.getText().toString();
-        final String time=etTime.getText().toString();
-        StringRequest stringRequest = new StringRequest(Request.Method.PATCH, "http://pfd.techeasesol.com/api/v1/user/recipes/"+getRecipeId+"?api_token="+apiToken
-                +"&title="+title+"&instructions="+strInstructions+"&ingredients="+strIngredients+"&time_to_cook="+time+"&tags="+Recipe_Category
-                , new Response.Listener<String>() {
+
+        Log.d("zmaTit",etTitle.getText().toString());
+        Log.d("zmaIns",strInstructions);
+        Log.d("zmaIng",strIngredients);
+        Log.d("zmaTime",etTime.getText().toString());
+        Log.d("zmaToken",apiToken);
+        Log.d("zmaTag",Recipe_Category);
+        Log.d("zmaRid",getRecipeId);
+
+        String timeToCook=etTime.getText().toString().trim();
+        String strTitle=etTitle.getText().toString().trim();
+
+        //removing space from text
+        String strTimeExcSpace  = timeToCook.replaceAll(" ","");
+        String strTitleExcSpace= strTitle.replaceAll(" ","");
+        String strInsExcSpace=strInstructions.replaceAll(" ","");
+        String strIngExcSpace=strIngredients.replaceAll(" ","");
+
+        final String url ="http://pfd.techeasesol.com/api/v1/user/recipes/"+getRecipeId+"?api_token="+apiToken
+                +"&title="+strTitleExcSpace+"&instructions="+strInsExcSpace+"&ingredients="+
+                strIngExcSpace+"&time_to_cook="+strTimeExcSpace+"&tags="+Recipe_Category;
+        Log.d("zma respo", url);
+        JsonObjectRequest stringRequest = new JsonObjectRequest(Request.Method.PATCH,url , new Response.Listener<JSONObject>() {
             @Override
-            public void onResponse(String response) {
-                Log.d("rest respo", response);
+            public void onResponse(JSONObject response) {
+                Log.d("zma respo", response+"\n"+url);
                 Fragment fragment=new UserListOfRecipes();
                 getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
-                Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getActivity(), response, Toast.LENGTH_SHORT).show();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // progressBar.setVisibility(View.INVISIBLE);
-                Log.d("error" , String.valueOf(error.getCause()));
+                Log.d("error" , String.valueOf(error.getMessage()));
 
             }
         }) {

@@ -79,18 +79,20 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
         holder.tvRecipeId.setText(model.getId());
         Glide.with(context).load(model.getRecipeImage()).into(holder.ivRecipeImage);
 
-        strTitle=model.getRecipeName();
-        strTime=model.getRecipeTime();
-        strTag=model.getRecipeCatgory();
-        strIns=model.getRecipeIns();
-        strIng=model.getRecipeIng();
-        strId=model.getId();
-        strImage=model.getRecipeImage();
+
 
        holder.linearLayout.setOnLongClickListener(new View.OnLongClickListener() {
            @Override
            public boolean onLongClick(View v) {
+
                recipeId= model.getId();
+               strTitle=model.getRecipeName();
+               strTime=model.getRecipeTime();
+               strTag=model.getRecipeCatgory();
+               strIns=model.getRecipeIns();
+               strIng=model.getRecipeIng();
+               strImage=model.getRecipeImage();
+
                AlertDialog.Builder builder = new AlertDialog.Builder(context);
                builder.setTitle("Select");
                builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -126,8 +128,6 @@ public class ListOfRecipeAdapter extends RecyclerView.Adapter<ListOfRecipeAdapte
         Fragment fragment = new UpdateReicpeFragment();
         fragment.setArguments(bundle);
         ((AppCompatActivity) context).getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack("abc").commit();
-
-
     }
 
     private void DeleteRecipe()

@@ -79,8 +79,11 @@ public class ResetPassFrag extends Fragment {
             etReEnterPass.setError("Password does not match");
         }
         else
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
-        apiCall();
+        {
+            DialogUtils.showProgressSweetDialog(getActivity(), "Reseting");
+            apiCall();
+        }
+
     }
 
     private void apiCall() {
@@ -89,8 +92,20 @@ public class ResetPassFrag extends Fragment {
             public void onResponse(String response) {
                 Log.d("zma respoonse", response);
                 DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Password changed successfully");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Fragment fragment=new LoginFrag();
                 getFragmentManager().beginTransaction().replace(R.id.container,fragment).commit();
+                DialogUtils.sweetAlertDialog.dismiss();
             }
         }, new Response.ErrorListener() {
             @Override

@@ -119,15 +119,28 @@ public class LoginFrag extends Fragment {
                     JSONObject jsonObject = new JSONObject(response).getJSONObject("data");
                     String api_token=jsonObject.getString("api_token");
                     String name=jsonObject.getString("name");
+                    String email=jsonObject.getString("email");
+                    editor.putString("fname",etUsername.getText().toString());
                     editor.putString("api_token",api_token);
-                    editor.putString("name",name);
-                    editor.commit();
+                    editor.putString("name",name).commit();
+                    editor.putString("email",email).commit();
                     Log.d("zma data",name);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 startActivity(new Intent(getActivity(), Dashboard.class));
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Logged in successfully");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 getActivity().finish();
             }
         }, new Response.ErrorListener() {

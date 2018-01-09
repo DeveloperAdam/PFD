@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.mancj.materialsearchbar.MaterialSearchBar;
-import com.techease.pfd.Adapters.Pesh_FD_Adapter;
+import com.techease.pfd.Adapters.allResturantAdapter;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Controller.Pesh_FD_Model;
 import com.techease.pfd.R;
@@ -40,12 +41,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class AllResturentFrag extends Fragment {
 
     RecyclerView recyclerView;
     List<Pesh_FD_Model> PFDmodels;
-    Pesh_FD_Adapter pesh_fd_adapter;
+    allResturantAdapter allResturant_adapter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String api_token,strCheckComma,image,name,id,locatoin;
@@ -69,9 +72,10 @@ public class AllResturentFrag extends Fragment {
             recyclerView=(RecyclerView)view.findViewById(R.id.rvPesh_FD);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             PFDmodels=new ArrayList<>();
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
-            pesh_fd_adapter=new Pesh_FD_Adapter(getActivity(),PFDmodels);
-            recyclerView.setAdapter(pesh_fd_adapter);
+            allResturant_adapter =new allResturantAdapter(getActivity(),PFDmodels);
+            recyclerView.setAdapter(allResturant_adapter);
 
         }
         else
@@ -103,9 +107,9 @@ public class AllResturentFrag extends Fragment {
                         newData.add(PFDmodels.get(j));
                     }
                 }
-                pesh_fd_adapter = new Pesh_FD_Adapter(getActivity(), newData);
-                recyclerView.setAdapter(pesh_fd_adapter);
-                pesh_fd_adapter.notifyDataSetChanged();
+                allResturant_adapter = new allResturantAdapter(getActivity(), newData);
+                recyclerView.setAdapter(allResturant_adapter);
+                allResturant_adapter.notifyDataSetChanged();
             }
             @Override
             public void afterTextChanged(Editable editable) {
@@ -118,14 +122,18 @@ public class AllResturentFrag extends Fragment {
 
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-       setProgressValue(progressbarstatus);
+//        progressBar.setVisibility(View.VISIBLE);
+//       setProgressValue(progressbarstatus);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-                    try {
+                DialogUtils.sweetAlertDialog.dismiss();
+                int response_code=response.;
+                if ()
+                try {
                         PFDmodels.clear();
                         JSONObject jsonObject=new JSONObject(response);
                         JSONArray jsonArr=jsonObject.getJSONArray("data");
@@ -135,12 +143,7 @@ public class AllResturentFrag extends Fragment {
                             Pesh_FD_Model model=new Pesh_FD_Model();
                             name=temp.getString("name");
                             id=temp.getString("id");
-                          strCheckComma=locatoin=temp.getString("location");
-//                          stringTokenizer=new StringTokenizer(strCheckComma,",");
-//                          while (stringTokenizer.hasMoreTokens())
-//                          {
-//                            //  Toast.makeText(getActivity(), stringTokenizer.nextToken(), Toast.LENGTH_SHORT).show();
-//                          }
+                            strCheckComma=locatoin=temp.getString("location");
                             image=temp.getString("image_url");
                             model.setRestName(temp.getString("name"));
                             model.setId(temp.getString("id"));
@@ -154,10 +157,10 @@ public class AllResturentFrag extends Fragment {
 
                             PFDmodels.add(model);
 
-                            progressBar.setVisibility(View.INVISIBLE);
+                         //   progressBar.setVisibility(View.INVISIBLE);
 
                         }
-                        pesh_fd_adapter.notifyDataSetChanged();
+                        allResturant_adapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -167,7 +170,19 @@ public class AllResturentFrag extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              progressBar.setVisibility(View.INVISIBLE);
+            //  progressBar.setVisibility(View.INVISIBLE);
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Server Error");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }
@@ -194,8 +209,8 @@ public class AllResturentFrag extends Fragment {
     public void onResume() {
         super.onResume();
         apicall();
-        pesh_fd_adapter=new Pesh_FD_Adapter(getActivity(),PFDmodels);
-        recyclerView.setAdapter(pesh_fd_adapter);
+        allResturant_adapter =new allResturantAdapter(getActivity(),PFDmodels);
+        recyclerView.setAdapter(allResturant_adapter);
 
     }
 
