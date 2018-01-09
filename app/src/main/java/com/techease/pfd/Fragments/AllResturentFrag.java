@@ -125,14 +125,12 @@ public class AllResturentFrag extends Fragment {
 //        progressBar.setVisibility(View.VISIBLE);
 //       setProgressValue(progressbarstatus);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants?api_token="+api_token
+        final StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("rest respo", response);
+                Log.d("zmaResp", response);
                 DialogUtils.sweetAlertDialog.dismiss();
-                int response_code=response.;
-                if ()
                 try {
                         PFDmodels.clear();
                         JSONObject jsonObject=new JSONObject(response);

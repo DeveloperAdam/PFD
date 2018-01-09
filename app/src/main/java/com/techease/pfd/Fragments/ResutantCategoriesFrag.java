@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -42,6 +43,8 @@ public class ResutantCategoriesFrag extends Fragment {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 String restId,api_token,catId;
+    ProgressBar progressBar;
+    int progressbarstatus = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +55,7 @@ String restId,api_token,catId;
         api_token=sharedPreferences.getString("api_token","");
         restId=sharedPreferences.getString("restId","");
         catId= String.valueOf(getArguments().getInt("id"));
+        progressBar=(ProgressBar)view.findViewById(R.id.pbCategoriesItem);
         Log.d("zma token",api_token);
         Log.d("zma restId",restId);
         Log.d("zma catId",catId);
@@ -65,6 +69,8 @@ String restId,api_token,catId;
     }
 
     private void apicall() {
+        progressBar.setVisibility(View.VISIBLE);
+       setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants/"+restId+"/categories/"+catId+"?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
@@ -93,6 +99,7 @@ String restId,api_token,catId;
                                     model.setItemRating(temp.getString("average"));
                                 }
                                 Cmodel.add(model);
+                                progressBar.setVisibility(View.INVISIBLE);
                         }
                         categoriesMenuAdapter.notifyDataSetChanged();
 
@@ -106,6 +113,7 @@ String restId,api_token,catId;
             public void onErrorResponse(VolleyError error) {
                 //DialogUtils.sweetAlertDialog.dismiss();
                 // DialogUtils.showErrorTypeAlertDialog(getActivity(), "Server error");
+                progressBar.setVisibility(View.INVISIBLE);
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }
@@ -129,4 +137,22 @@ String restId,api_token,catId;
         mRequestQueue.add(stringRequest);
     }
 
+    private void setProgressValue(final int progress) {
+
+        // set the progress
+        progressBar.setProgress(progress);
+        // thread is used to change the progress value
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                setProgressValue(progress + 10);
+            }
+        });
+        thread.start();
+    }
 }

@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -34,6 +35,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class ResutrantDetail extends Fragment implements View.OnClickListener {
@@ -76,6 +79,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         imageView=(ImageView)view.findViewById(R.id.ivPesh_FD_Detial);
         RestName=(TextView)view.findViewById(R.id.tvRestNamePesh_Fd_Details);
         RestLocation=(TextView)view.findViewById(R.id.tvRestLoc_Pesh_Fd_Details);
+        DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
         apicall();
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.pagerInfoPizzaHut);
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayoutPizzaHut);
@@ -128,13 +132,14 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
     }
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-        setProgressValue(progressbarstatus);
+//        progressBar.setVisibility(View.VISIBLE);
+//        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants/"+restId+"?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("details", response);
+                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject JsonGet=jsonObject.getJSONObject("data");
@@ -143,7 +148,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
                         RestName.setText(JsonGet.getString("name"));
                         RestLocation.setText(JsonGet.getString("location"));
 
-                        progressBar.setVisibility(View.INVISIBLE);
+                      //  progressBar.setVisibility(View.INVISIBLE);
 
 
 
@@ -156,7 +161,20 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.INVISIBLE);
+              //  progressBar.setVisibility(View.INVISIBLE);
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Oppsss");
+                pDialog.setNeutralText("There is some thing wrong");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }

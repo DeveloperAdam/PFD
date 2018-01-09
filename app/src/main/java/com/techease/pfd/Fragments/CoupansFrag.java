@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,6 +31,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class CoupansFrag extends Fragment {
 
     TextView UseCoupan,CoupanTime,CoupanName,DiscountNo,DiscountType;
@@ -56,6 +59,7 @@ public class CoupansFrag extends Fragment {
             editor = sharedPreferences.edit();
             api_token=sharedPreferences.getString("api_token","");
             restId=sharedPreferences.getString("restId","");
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
         }
         else
@@ -67,14 +71,13 @@ public class CoupansFrag extends Fragment {
     }
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-        setProgressValue(progressbarstatus);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/coupons?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-
+                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject object=jsonObject.getJSONObject("data");
@@ -93,8 +96,19 @@ public class CoupansFrag extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.INVISIBLE);
-                Log.d("error" , String.valueOf(error.getCause()));
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Server Error");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
+                Log.d("C_error" , String.valueOf(error.getCause()));
 
             }
         }) {

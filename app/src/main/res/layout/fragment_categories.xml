@@ -6,12 +6,24 @@
     android:background="#fff"
     android:padding="10sp"
     tools:context="com.techease.pfd.Fragments.ResutantCategoriesFrag">
-
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/pbCategoriesItem"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="50sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:max="100"
+        android:progress="0" />
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/rvCategories">
     </android.support.v7.widget.RecyclerView>
-
+</FrameLayout>
 
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class ResturantMenuFrag extends Fragment {
 
@@ -64,6 +67,8 @@ FrameLayout frameLayout;
             mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
             //  tabLayout.addTab(tabLayout.newTab().setText("Test"));
             //   tabLayout.addTab(tabLayout.newTab().setText("Test2"));
+
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
 //        tabLayout.addTab(tabLayout.newTab().setText("NEW DEAL"));
 //        tabLayout.addTab(tabLayout.newTab().setText("FAMILY DEAL"));
@@ -86,6 +91,7 @@ FrameLayout frameLayout;
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
+                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArr = jsonObject.getJSONArray("data");
@@ -109,6 +115,18 @@ FrameLayout frameLayout;
             @Override
             public void onErrorResponse(VolleyError error) {
                 //    DialogUtils.sweetAlertDialog.dismiss();
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Server Error");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error", String.valueOf(error.getCause()));
 
             }

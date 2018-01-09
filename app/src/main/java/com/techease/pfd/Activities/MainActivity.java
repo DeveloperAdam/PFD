@@ -106,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
+
+                                    startActivity(new Intent(MainActivity.this,Dashboard.class));
                                     final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE);
                                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                                     pDialog.setTitleText("Logged in successfully");
@@ -117,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
                                         }
                                     });
                                     pDialog.show();
-                                    startActivity(new Intent(MainActivity.this,Dashboard.class));
                                 }
                             });
                             Bundle parameters = new Bundle();
