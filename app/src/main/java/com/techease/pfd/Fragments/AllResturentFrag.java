@@ -27,7 +27,7 @@ import com.android.volley.toolbox.Volley;
 import com.mancj.materialsearchbar.MaterialSearchBar;
 import com.techease.pfd.Adapters.allResturantAdapter;
 import com.techease.pfd.Configuration.Links;
-import com.techease.pfd.Controller.Pesh_FD_Model;
+import com.techease.pfd.Controller.allResturantModel;
 import com.techease.pfd.R;
 import com.techease.pfd.Utils.CheckNetwork;
 
@@ -47,7 +47,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class AllResturentFrag extends Fragment {
 
     RecyclerView recyclerView;
-    List<Pesh_FD_Model> PFDmodels;
+    List<allResturantModel> PFDmodels;
     allResturantAdapter allResturant_adapter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -100,7 +100,7 @@ public class AllResturentFrag extends Fragment {
                 Log.d("LOG_TAG", getClass().getSimpleName() + " text changed " + searchView.getText());
 
                 query = query.toString().toLowerCase();
-                List<Pesh_FD_Model> newData = new ArrayList<>();
+                List<allResturantModel> newData = new ArrayList<>();
                 for (int j = 0; j < PFDmodels.size(); j++) {
                     final String test2 = PFDmodels.get(j).getRestName().toLowerCase();
                     if (test2.startsWith(String.valueOf(query))) {
@@ -138,7 +138,7 @@ public class AllResturentFrag extends Fragment {
                         for (int i=0; i<jsonArr.length(); i++)
                         {
                             JSONObject temp = jsonArr.getJSONObject(i);
-                            Pesh_FD_Model model=new Pesh_FD_Model();
+                            allResturantModel model=new allResturantModel();
                             name=temp.getString("name");
                             id=temp.getString("id");
                             strCheckComma=locatoin=temp.getString("location");

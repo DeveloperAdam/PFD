@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.techease.pfd.Configuration.Links;
-import com.techease.pfd.Controller.Pesh_FD_Model;
+import com.techease.pfd.Controller.allResturantModel;
 import com.techease.pfd.Fragments.ResutrantDetail;
 import com.techease.pfd.R;
 
@@ -28,12 +28,12 @@ import java.util.List;
 
 public class allResturantAdapter extends RecyclerView.Adapter<allResturantAdapter.MyViewHolder> {
     Context context;
-    List<Pesh_FD_Model> pesh_fd_models;
+    List<allResturantModel> allResturant_models;
 
 
-    public allResturantAdapter(Context context, List<Pesh_FD_Model> models) {
+    public allResturantAdapter(Context context, List<allResturantModel> models) {
         this.context=context;
-        this.pesh_fd_models=models;
+        this.allResturant_models =models;
     }
 
 
@@ -47,7 +47,7 @@ public class allResturantAdapter extends RecyclerView.Adapter<allResturantAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        final Pesh_FD_Model peshFdModel=pesh_fd_models.get(position);
+        final allResturantModel peshFdModel= allResturant_models.get(position);
         holder.RestName.setText(peshFdModel.getRestName());
         holder.TvAllRestId.setText(peshFdModel.getId());
         holder.Image_Url=peshFdModel.getImageUrl();
@@ -55,14 +55,14 @@ public class allResturantAdapter extends RecyclerView.Adapter<allResturantAdapte
         holder.editor.putString("Rest_id",peshFdModel.getId());
         holder.ratingBar.setRating(Float.parseFloat(peshFdModel.getRating()));
         Glide.with(context).load(holder.Image_Url).into(holder.imageView);
-        holder.editor.putInt("No resturents",(pesh_fd_models.size()));
+        holder.editor.putInt("No resturents",(allResturant_models.size()));
     }
 
 
 
     @Override
     public int getItemCount() {
-        return pesh_fd_models.size();
+        return allResturant_models.size();
 
     }
 
