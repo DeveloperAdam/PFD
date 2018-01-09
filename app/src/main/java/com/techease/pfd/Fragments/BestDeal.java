@@ -2,6 +2,7 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -39,6 +40,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class BestDeal extends Fragment {
 
@@ -70,6 +73,7 @@ public class BestDeal extends Fragment {
             api_token=sharedPreferences.getString("api_token","");
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             bestDealModels=new ArrayList<>();
+            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
             bestDealAdapter=new BestDealAdapter(getActivity(),bestDealModels);
             recyclerView.setAdapter(bestDealAdapter);
@@ -115,8 +119,8 @@ public class BestDeal extends Fragment {
     }
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-        setProgressValue(progressbarstatus);
+//        progressBar.setVisibility(View.VISIBLE);
+//        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/featured?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
@@ -141,7 +145,8 @@ public class BestDeal extends Fragment {
                         model.setId(InnerMostObj.getString("id"));
 
                         bestDealModels.add(model);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        DialogUtils.sweetAlertDialog.dismiss();
+                   //     progressBar.setVisibility(View.INVISIBLE);
 
                     }
                     bestDealAdapter.notifyDataSetChanged();
@@ -154,7 +159,19 @@ public class BestDeal extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.INVISIBLE);
+             //   progressBar.setVisibility(View.INVISIBLE);
+                DialogUtils.sweetAlertDialog.dismiss();
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+                pDialog.setTitleText("Server Error");
+                pDialog.setConfirmText("OK");
+                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        pDialog.dismissWithAnimation();
+                    }
+                });
+                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }

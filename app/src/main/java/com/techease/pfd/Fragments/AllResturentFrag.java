@@ -170,7 +170,7 @@ public class AllResturentFrag extends Fragment {
             public void onErrorResponse(VolleyError error) {
             //  progressBar.setVisibility(View.INVISIBLE);
                 DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Server Error");
                 pDialog.setConfirmText("OK");

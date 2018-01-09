@@ -163,7 +163,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
             public void onErrorResponse(VolleyError error) {
               //  progressBar.setVisibility(View.INVISIBLE);
                 DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
+                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Oppsss");
                 pDialog.setNeutralText("There is some thing wrong");
