@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
 
-                                    startActivity(new Intent(MainActivity.this,Dashboard.class));
                                     final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE);
                                     pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                                     pDialog.setTitleText("Logged in successfully");
@@ -116,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(SweetAlertDialog sweetAlertDialog) {
                                             pDialog.dismissWithAnimation();
+                                            startActivity(new Intent(MainActivity.this,Dashboard.class));
                                         }
                                     });
                                     pDialog.show();

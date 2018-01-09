@@ -28,10 +28,10 @@ import org.json.JSONObject;
 public class Setting extends Fragment {
 
     ProfilePictureView profilePictureView;
-    TextView UserName,UserBirthday,UserGender,UserLocation,tvPersonalInfo,tvUserGender,tvUserLoc,tvUserBirthday,tvProfile;
+    TextView UserName,UserEmail,UserGender,UserLocation,tvPersonalInfo,tvUserGender,tvUserLoc,tvUserBirthday,tvProfile;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    String strUserId,strUserFname,strUserLname,strGender,strUserLoc,strUserBirthday;
+    String strUserId,strUserFname,strUserLname,strGender,strUserLoc,strUserEmail;
     Typeface typeface,typeface2;
     ProgressBar progressBar;
     int progressbarstatus = 0;
@@ -53,7 +53,7 @@ public class Setting extends Fragment {
         typeface2=Typeface.createFromAsset(getActivity().getAssets(),"font/brandon_reg.otf");
 
         UserName=(TextView)view.findViewById(R.id.tvFbUserName);
-        UserBirthday=(TextView)view.findViewById(R.id.tvUserBirthday);
+        UserEmail=(TextView)view.findViewById(R.id.tvUserEmail);
         UserGender=(TextView)view.findViewById(R.id.tvUserGender);
         UserLocation=(TextView)view.findViewById(R.id.tvUserLoc);
         tvPersonalInfo=(TextView)view.findViewById(R.id.tvPersonalInfo);
@@ -65,7 +65,7 @@ public class Setting extends Fragment {
         UserName.setTypeface(typeface);
         UserLocation.setTypeface(typeface2);
         UserGender.setTypeface(typeface2);
-        UserBirthday.setTypeface(typeface2);
+        UserEmail.setTypeface(typeface2);
         tvUserLoc.setTypeface(typeface);
         tvUserGender.setTypeface(typeface);
         tvUserBirthday.setTypeface(typeface);
@@ -76,7 +76,7 @@ public class Setting extends Fragment {
         strUserLname=sharedPreferences.getString("lname","");
         strUserId=sharedPreferences.getString("userId","");
         strUserLoc=sharedPreferences.getString("uLoc","");
-        strUserBirthday=sharedPreferences.getString("uEmail","");
+        strUserEmail=sharedPreferences.getString("uEmail","");
         strGender=sharedPreferences.getString("uGender","");
 
         profilePictureView = (ProfilePictureView)view.findViewById(R.id.friendProfilePicture);
@@ -89,10 +89,6 @@ public class Setting extends Fragment {
         String fb=sharedPreferences.getString("fb","");
         if (fb!=null)
         {
-            Toast.makeText(getActivity(), "You have to login through facebook", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
             GraphRequest request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
                 @Override
                 public void onCompleted(
@@ -103,16 +99,16 @@ public class Setting extends Fragment {
                     try {
 
                         strGender=object.getString("gender");
-                        strUserBirthday=object.getString("email");
+                        strUserEmail=object.getString("email");
                         JSONObject jsonObject=new JSONObject();
                         jsonObject=object.getJSONObject("location");
                         strUserLoc=jsonObject.getString("name");
 
-                        UserBirthday.setText(strUserBirthday);
+                        UserEmail.setText(strUserEmail);
                         UserGender.setText(strGender);
                         UserLocation.setText(strUserLoc);
 
-                        editor.putString("uEmail",strUserBirthday);
+                        editor.putString("uEmail",strUserEmail);
                         editor.putString("uGender",strGender);
                         editor.putString("uLoc",strUserLoc).commit();
 
@@ -129,6 +125,11 @@ public class Setting extends Fragment {
             request.setParameters(parameters);
             request.executeAsync();
             progressBar.setVisibility(View.INVISIBLE);
+        }
+        else
+        {
+            Toast.makeText(getActivity(), "You have to login through facebook", Toast.LENGTH_SHORT).show();
+
         }
 
 

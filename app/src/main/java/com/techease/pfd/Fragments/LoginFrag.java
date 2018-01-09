@@ -129,7 +129,6 @@ public class LoginFrag extends Fragment {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(getActivity(), Dashboard.class));
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Logged in successfully");
@@ -141,6 +140,7 @@ public class LoginFrag extends Fragment {
                     }
                 });
                 pDialog.show();
+                startActivity(new Intent(getActivity(), Dashboard.class));
                 getActivity().finish();
             }
         }, new Response.ErrorListener() {
