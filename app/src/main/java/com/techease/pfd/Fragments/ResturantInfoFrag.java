@@ -2,7 +2,6 @@ package com.techease.pfd.Fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,8 +29,6 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ResturantInfoFrag extends Fragment {
     SharedPreferences sharedPreferences;
@@ -63,7 +60,7 @@ public class ResturantInfoFrag extends Fragment {
             tvRestInfoAddress.setTypeface(typeface2);
             tvAbout.setTypeface(typeface2);
             tvAboutTitle.setTypeface(typeface);
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
+//            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
         }
         else
@@ -80,7 +77,7 @@ public class ResturantInfoFrag extends Fragment {
             @Override
             public void onResponse(String response) {
                 Log.d("details", response);
-                DialogUtils.sweetAlertDialog.dismiss();
+              //  DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject JsonGet=jsonObject.getJSONObject("data");
@@ -102,18 +99,18 @@ public class ResturantInfoFrag extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //    DialogUtils.sweetAlertDialog.dismiss();
-                DialogUtils.sweetAlertDialog.dismiss();
-                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
-                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                pDialog.setTitleText("Server Error");
-                pDialog.setConfirmText("OK");
-                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        pDialog.dismissWithAnimation();
-                    }
-                });
-                pDialog.show();
+//                DialogUtils.sweetAlertDialog.dismiss();
+//                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
+//                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
+//                pDialog.setTitleText("Server Error");
+//                pDialog.setConfirmText("OK");
+//                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                    @Override
+//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                        pDialog.dismissWithAnimation();
+//                    }
+//                });
+//                pDialog.show();
                 Log.d("error" , String.valueOf(error.getCause()));
 
             }

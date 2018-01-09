@@ -132,14 +132,13 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
     }
 
     private void apicall() {
-//        progressBar.setVisibility(View.VISIBLE);
-//        setProgressValue(progressbarstatus);
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/resturants/"+restId+"?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.d("details", response);
-                DialogUtils.sweetAlertDialog.dismiss();
+
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject JsonGet=jsonObject.getJSONObject("data");
@@ -148,7 +147,7 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
                         RestName.setText(JsonGet.getString("name"));
                         RestLocation.setText(JsonGet.getString("location"));
 
-                      //  progressBar.setVisibility(View.INVISIBLE);
+                    DialogUtils.sweetAlertDialog.dismiss();
 
 
 
@@ -222,25 +221,6 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
                 break;
         }
 
-    }
-
-    private void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
     }
 
 
