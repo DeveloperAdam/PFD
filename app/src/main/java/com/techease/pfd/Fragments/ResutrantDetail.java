@@ -69,7 +69,6 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         //Resturent Id get from All Resturent Fragment
         restId=getArguments().getString("restId");
 
-     //  progressBar=(ProgressBar)view.findViewById(R.id.progress_barRest_Detail);
         sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         api_token=sharedPreferences.getString("api_token","");
@@ -160,7 +159,6 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-              //  progressBar.setVisibility(View.INVISIBLE);
                 DialogUtils.sweetAlertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));

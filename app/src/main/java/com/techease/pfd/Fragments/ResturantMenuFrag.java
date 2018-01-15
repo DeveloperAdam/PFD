@@ -62,15 +62,8 @@ FrameLayout frameLayout;
 
             LinearLayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
             mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            //  tabLayout.addTab(tabLayout.newTab().setText("Test"));
-            //   tabLayout.addTab(tabLayout.newTab().setText("Test2"));
-
-      //      DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
             apicall();
-//        tabLayout.addTab(tabLayout.newTab().setText("NEW DEAL"));
-//        tabLayout.addTab(tabLayout.newTab().setText("FAMILY DEAL"));
-//        tabLayout.addTab(tabLayout.newTab().setText("STARTERS"));
-//        tabLayout.addTab(tabLayout.newTab().setText("DESERTS"));
+
         }
         else
         {
@@ -88,7 +81,6 @@ FrameLayout frameLayout;
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-             //   DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArr = jsonObject.getJSONArray("data");
@@ -97,9 +89,6 @@ FrameLayout frameLayout;
                         Categories = new String[jsonArr.length()];
                         Categories[i] = temp.getString("category_name");
                         tabLayout.addTab(tabLayout.newTab().setText(Categories[i]));
-
-                        //  DialogUtils.sweetAlertDialog.dismiss();
-                        // pDialog.dismiss();
 
                     }
 
@@ -111,19 +100,6 @@ FrameLayout frameLayout;
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                //    DialogUtils.sweetAlertDialog.dismiss();
-//                DialogUtils.sweetAlertDialog.dismiss();
-//                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
-//                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-//                pDialog.setTitleText("Server Error");
-//                pDialog.setConfirmText("OK");
-//                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                    @Override
-//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-//                        pDialog.dismissWithAnimation();
-//                    }
-//                });
-//                pDialog.show();
                 Log.d("error", String.valueOf(error.getCause()));
 
             }
@@ -253,45 +229,6 @@ FrameLayout frameLayout;
             this.mNumOfTabs = NumOfTabs;
         }
 
-
-//        @Override
-//        public android.support.v4.app.Fragment getItem(int position) {
-//
-//            switch (position) {
-//                case 0:
-////                    ResutantCategoriesFrag frag=new ResutantCategoriesFrag();
-////                    Bundle bundle=new Bundle();
-////                    bundle.putInt("id",1);
-////                    frag.setArguments(bundle);
-//                    return null;
-//                case 1:
-////                    ResutantCategoriesFrag frag2=new ResutantCategoriesFrag();
-////                    Bundle bundle2=new Bundle();
-////                    bundle2.putInt("id",2);
-////                    frag2.setArguments(bundle2);
-//                    return null;
-//                case 2:
-////                    ResutantCategoriesFrag frag3=new ResutantCategoriesFrag();
-////                    Bundle bundle3=new Bundle();
-////                    bundle3.putInt("id",3);
-////                    frag3.setArguments(bundle3);
-//                    return null;
-//                case 3:
-////                    ResutantCategoriesFrag frag4=new ResutantCategoriesFrag();
-////                    Bundle bundle4=new Bundle();
-////                    bundle4.putInt("id",4);
-////                    frag4.setArguments(bundle4);
-//                    return null;
-//                case 4:
-////                    ResutantCategoriesFrag frag5=new ResutantCategoriesFrag();
-////                    Bundle bundle5=new Bundle();
-////                    bundle5.putInt("id",5);
-////                    frag5.setArguments(bundle5);
-//                    return null;
-//                default:
-//                    return null;
-//            }
-//        }
 
         @Override
         public int getCount() {
