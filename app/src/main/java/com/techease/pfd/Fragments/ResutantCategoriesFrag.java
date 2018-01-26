@@ -42,7 +42,7 @@ public class ResutantCategoriesFrag extends Fragment {
     CategoriesMenuAdapter categoriesMenuAdapter;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-String restId,api_token,catId;
+    String restId,api_token,catId;
     ProgressBar progressBar;
     int progressbarstatus = 0;
     @Override
@@ -54,7 +54,7 @@ String restId,api_token,catId;
         editor = sharedPreferences.edit();
         api_token=sharedPreferences.getString("api_token","");
         restId=sharedPreferences.getString("restId","");
-        catId= String.valueOf(getArguments().getInt("id"));
+        catId= getArguments().getString("id");
         progressBar=(ProgressBar)view.findViewById(R.id.pbCategoriesItem);
         Log.d("zma token",api_token);
         Log.d("zma restId",restId);
@@ -96,7 +96,10 @@ String restId,api_token,catId;
                                 for (int z=0; z<ratingArray.length(); z++)
                                 {
                                     JSONObject temp=ratingArray.getJSONObject(z);
-                                    model.setItemRating(temp.getString("average"));
+                                    if (temp.has("average"))
+                                    {
+                                        model.setItemRating(temp.getString("average"));
+                                    }
                                 }
                                 Cmodel.add(model);
                                 progressBar.setVisibility(View.INVISIBLE);

@@ -150,7 +150,11 @@ public class AllResturentFrag extends Fragment {
                             JSONArray ratingArray = temp.getJSONArray("rating");
                             for (int j = 0; j<ratingArray.length();j++){
                                 JSONObject tempRating = ratingArray.getJSONObject(j);
-                                model.setRating(tempRating.getString("average"));
+                                if (temp.has("average"))
+                                {
+                                    model.setRating(tempRating.getString("average"));
+                                }
+
                             }
 
                             PFDmodels.add(model);

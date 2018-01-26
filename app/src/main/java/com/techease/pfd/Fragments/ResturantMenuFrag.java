@@ -39,7 +39,7 @@ import java.util.Map;
 public class ResturantMenuFrag extends Fragment {
 
     TabLayout tabLayout;
-    String restId, api_token;
+    String restId, api_token,catId;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     String[] Categories;
@@ -88,6 +88,62 @@ FrameLayout frameLayout;
                         JSONObject temp = jsonArr.getJSONObject(i);
                         Categories = new String[jsonArr.length()];
                         Categories[i] = temp.getString("category_name");
+                        catId=temp.getString("id");
+                        Log.d("catId",catId);
+                        if (i==0)
+                        {
+                           editor.putString("0",catId).commit();
+
+                        }
+                        else if (i==1)
+                        {
+                            editor.putString("1",catId).commit();
+                        }
+                        else
+                            if (i==2)
+                            {
+                                editor.putString("2",catId).commit();
+                            }
+                        else
+                            if (i==3)
+                            {
+                                editor.putString("3",catId).commit();
+                            }
+                            else
+                            if (i==4)
+                            {
+                                editor.putString("4",catId).commit();
+                            }
+                            else
+                            if (i==5)
+                            {
+                                editor.putString("5",catId).commit();
+                            }
+                            else
+                            if (i==6)
+                            {
+                                editor.putString("6",catId).commit();
+                            }
+                            else
+                            if (i==7)
+                            {
+                                editor.putString("7",catId).commit();
+                            }
+                            else
+                            if (i==8)
+                            {
+                                editor.putString("8",catId).commit();
+                            }
+                            else
+                            if (i==9)
+                            {
+                                editor.putString("9",catId).commit();
+                            }
+                            else
+                            if (i==10)
+                            {
+                                editor.putString("10",catId).commit();
+                            }
                         tabLayout.addTab(tabLayout.newTab().setText(Categories[i]));
 
                     }
@@ -130,22 +186,23 @@ FrameLayout frameLayout;
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition() == 0) {
+                if (tab.getPosition() == 0 ) {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 1);
+                    bundle.putString("id",sharedPreferences.getString("0",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems, fragment).commit();
-                } else if (tab.getPosition() == 1) {
+                }
+                    else if (tab.getPosition() == 1) {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 2);
+                    bundle.putString("id",sharedPreferences.getString("1",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems, fragment).commit();
                 } else if (tab.getPosition() == 2) {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 3);
+                    bundle.putString("id",sharedPreferences.getString("2",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems, fragment).commit();
                 }
@@ -153,7 +210,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 4);
+                    bundle.putString("id",sharedPreferences.getString("3",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -161,7 +218,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 5);
+                    bundle.putString("id",sharedPreferences.getString("4",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -169,7 +226,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 6);
+                    bundle.putString("id",sharedPreferences.getString("5",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -177,7 +234,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 7);
+                    bundle.putString("id",sharedPreferences.getString("6",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -185,7 +242,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 8);
+                    bundle.putString("id",sharedPreferences.getString("7",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -193,7 +250,7 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 9);
+                    bundle.putString("id",sharedPreferences.getString("8",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }
@@ -201,7 +258,15 @@ FrameLayout frameLayout;
                 {
                     Fragment fragment = new ResutantCategoriesFrag();
                     Bundle bundle = new Bundle();
-                    bundle.putInt("id", 10);
+                    bundle.putString("id",sharedPreferences.getString("9",""));
+                    fragment.setArguments(bundle);
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
+                }
+                else if (tab.getPosition()==10)
+                {
+                    Fragment fragment = new ResutantCategoriesFrag();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id",sharedPreferences.getString("10",""));
                     fragment.setArguments(bundle);
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutCatItems,fragment).commit();
                 }

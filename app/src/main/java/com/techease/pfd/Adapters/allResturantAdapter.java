@@ -53,7 +53,11 @@ public class allResturantAdapter extends RecyclerView.Adapter<allResturantAdapte
         holder.Image_Url=peshFdModel.getImageUrl();
         holder.id=peshFdModel.getId();
         holder.editor.putString("Rest_id",peshFdModel.getId());
-        holder.ratingBar.setRating(Float.parseFloat(peshFdModel.getRating()));
+        if (peshFdModel.getRating()!=null)
+        {
+            holder.ratingBar.setRating(Float.parseFloat(peshFdModel.getRating()));
+        }
+
         Glide.with(context).load(holder.Image_Url).into(holder.imageView);
         holder.editor.putInt("No resturents",(allResturant_models.size()));
     }

@@ -16,25 +16,25 @@
             android:id="@+id/ivPesh_FD_Detial"
             android:scaleType="fitXY"
             android:background="#eee"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_marginTop="50sp"
-            android:src="@drawable/previous"
-            android:layout_marginLeft="-20sp"
-            app:civ_border_width="2dp"
-            app:civ_border_color="#eee"
-            android:id="@+id/ivBack"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:id="@+id/ivNext"
-            app:civ_border_width="2dp"
-            android:layout_marginRight="-20sp"
-            app:civ_border_color="#eee"
-            android:layout_gravity="right"
-            android:src="@drawable/next"
-            android:layout_marginTop="50sp"/>
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:layout_width="50sp"-->
+            <!--android:layout_height="50sp"-->
+            <!--android:layout_marginTop="50sp"-->
+            <!--android:src="@drawable/previous"-->
+            <!--android:layout_marginLeft="-20sp"-->
+            <!--app:civ_border_width="2dp"-->
+            <!--app:civ_border_color="#eee"-->
+            <!--android:id="@+id/ivBack"/>-->
+        <!--<de.hdodenhof.circleimageview.CircleImageView-->
+            <!--android:layout_width="50sp"-->
+            <!--android:layout_height="50sp"-->
+            <!--android:id="@+id/ivNext"-->
+            <!--app:civ_border_width="2dp"-->
+            <!--android:layout_marginRight="-20sp"-->
+            <!--app:civ_border_color="#eee"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:src="@drawable/next"-->
+            <!--android:layout_marginTop="50sp"/>-->
 
 
     </FrameLayout>

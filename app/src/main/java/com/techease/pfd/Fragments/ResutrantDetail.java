@@ -39,7 +39,7 @@ import java.util.Map;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
-public class ResutrantDetail extends Fragment implements View.OnClickListener {
+public class ResutrantDetail extends Fragment  {
 
     String api_token,restId;
     TabLayout tabLayout;
@@ -60,10 +60,10 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
 
         progressBar=(ProgressBar)view.findViewById(R.id.progress_barRestDetails);
 
-        ivNext=(ImageView)view.findViewById(R.id.ivNext);
-        ivBack=(ImageView)view.findViewById(R.id.ivBack);
-        ivBack.setOnClickListener(this);
-        ivNext.setOnClickListener(this);
+//        ivNext=(ImageView)view.findViewById(R.id.ivNext);
+//        ivBack=(ImageView)view.findViewById(R.id.ivBack);
+//        ivBack.setOnClickListener(this);
+//        ivNext.setOnClickListener(this);
 
 
         //Resturent Id get from All Resturent Fragment
@@ -195,31 +195,31 @@ public class ResutrantDetail extends Fragment implements View.OnClickListener {
         mRequestQueue.add(stringRequest);
     }
 
-    @Override
-    public void onClick(View v) {
-
-        int id = v.getId();
-        switch (id){
-            case R.id.ivNext:
-
-                    restId=String.valueOf(++ID);
-                    apicall();
-
-                break;
-            case R.id.ivBack:
-                if (restId.equals("1"))
-                {
-                    restId="1";
-                    apicall();
-                }
-                else
-                    ID=Integer.parseInt(restId);
-                    restId=String.valueOf(--ID);
-                    apicall();
-                break;
-        }
-
-    }
+//    @Override
+//    public void onClick(View v) {
+//
+//        int id = v.getId();
+//        switch (id){
+//            case R.id.ivNext:
+//
+//                    restId=String.valueOf(++ID);
+//                    apicall();
+//
+//                break;
+//            case R.id.ivBack:
+//                if (restId.equals("1"))
+//                {
+//                    restId="1";
+//                    apicall();
+//                }
+//                else
+//                    ID=Integer.parseInt(restId);
+//                    restId=String.valueOf(--ID);
+//                    apicall();
+//                break;
+//        }
+//
+//    }
 
 
     public static class PagerAdapter extends FragmentStatePagerAdapter {
