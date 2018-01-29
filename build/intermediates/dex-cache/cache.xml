@@ -39,21 +39,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\Adam Noor\.android\build-cache\374a3df6ea7e63ba296c99635757562427b35451\output\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.2"
-        sha1="821200fa3e07f93d0ae66e4a5917db8bac69dfe1">
-        <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9a246a9402215e4f11da9114e2d1bc54576c0499\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="E:\AndroidProjects\PFD\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
         sha1="831961ba3c89aa5610dd47ee16c4274402b84155">
         <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d2fea851c5fda2b7f0f5c716edb794af8b781b89\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Adam Noor\.android\build-cache\374a3df6ea7e63ba296c99635757562427b35451\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="821200fa3e07f93d0ae66e4a5917db8bac69dfe1">
+        <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_9a246a9402215e4f11da9114e2d1bc54576c0499\classes.dex" />
     </item>
     <item
         is-multidex="true"

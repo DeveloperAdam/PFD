@@ -16,25 +16,6 @@
             android:id="@+id/ivPesh_FD_Detial"
             android:scaleType="fitXY"
             android:background="#eee"/>
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-            <!--android:layout_width="50sp"-->
-            <!--android:layout_height="50sp"-->
-            <!--android:layout_marginTop="50sp"-->
-            <!--android:src="@drawable/previous"-->
-            <!--android:layout_marginLeft="-20sp"-->
-            <!--app:civ_border_width="2dp"-->
-            <!--app:civ_border_color="#eee"-->
-            <!--android:id="@+id/ivBack"/>-->
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-            <!--android:layout_width="50sp"-->
-            <!--android:layout_height="50sp"-->
-            <!--android:id="@+id/ivNext"-->
-            <!--app:civ_border_width="2dp"-->
-            <!--android:layout_marginRight="-20sp"-->
-            <!--app:civ_border_color="#eee"-->
-            <!--android:layout_gravity="right"-->
-            <!--android:src="@drawable/next"-->
-            <!--android:layout_marginTop="50sp"/>-->
 
 
     </FrameLayout>
@@ -82,17 +63,15 @@
         android:layout_height="35sp">
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayoutPizzaHut"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="30sp"
-            app:tabMaxWidth="0dp"
             app:tabGravity="fill"
             app:tabMode="fixed"
             android:layout_gravity="center"
-            app:tabTextColor="#eee"
-            app:tabPaddingStart="70sp"
-            app:tabSelectedTextColor="#129FDD"
-            app:tabIndicatorColor="#fff"
-            app:tabPaddingEnd="0dp"
+            android:foregroundGravity="center"
+            app:tabTextColor="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorPrimary"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
     </android.support.design.widget.AppBarLayout>
     <FrameLayout
@@ -115,42 +94,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </android.support.v4.view.ViewPager>
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab2"-->
-            <!--android:layout_width="40sp"-->
-            <!--android:layout_height="40sp"-->
-            <!--android:layout_marginBottom="120dp"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--android:layout_marginRight="@dimen/fab_margin"-->
-            <!--app:backgroundTint="#eee"-->
-            <!--app:elevation="6dp"-->
-            <!--android:scaleType="fitXY"-->
-           <!--android:visibility="gone"-->
-            <!--app:pressedTranslationZ="12dp"-->
-            <!--android:src="@drawable/back" />-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab1"-->
-            <!--android:layout_width="40sp"-->
-            <!--android:layout_height="40sp"-->
-            <!--android:layout_marginBottom="75dp"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--android:layout_marginRight="@dimen/fab_margin"-->
-            <!--android:visibility="gone"-->
-            <!--app:elevation="6dp"-->
-            <!--android:scaleType="fitXY"-->
-            <!--app:backgroundTint="#eee"-->
-            <!--app:pressedTranslationZ="12dp"-->
-            <!--android:src="@drawable/next" />-->
-        <!--<android.support.design.widget.FloatingActionButton-->
-            <!--android:id="@+id/fab"-->
-            <!--android:layout_width="50sp"-->
-            <!--android:layout_height="50sp"-->
-            <!--android:layout_gravity="bottom|end"-->
-            <!--app:elevation="6dp"-->
-            <!--android:background="#fff"-->
-            <!--android:scaleType="fitXY"-->
-            <!--app:pressedTranslationZ="12dp"-->
-            <!--android:layout_margin="@dimen/fab_margin"-->
-            <!--android:src="@drawable/addflot" />-->
     </FrameLayout>
 </LinearLayout>
