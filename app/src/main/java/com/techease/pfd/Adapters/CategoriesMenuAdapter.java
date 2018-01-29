@@ -94,19 +94,6 @@ public class CategoriesMenuAdapter extends RecyclerView.Adapter<CategoriesMenuAd
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-//                DialogUtils.sweetAlertDialog.dismiss();
-//                final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
-//                pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-//                pDialog.setTitleText("Email or Password incorrect");
-//                pDialog.setConfirmText("OK");
-//                pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-//                    @Override
-//                    public void onClick(SweetAlertDialog sweetAlertDialog) {
-//                        pDialog.dismissWithAnimation();
-//                    }
-//                });
-//                pDialog.show();
-
                 Toast.makeText(context, "Item Already rated", Toast.LENGTH_SHORT).show();
                 Log.d("zma error", String.valueOf(error.getCause()));
             }
