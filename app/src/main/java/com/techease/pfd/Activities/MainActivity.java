@@ -23,8 +23,10 @@ import com.android.volley.toolbox.Volley;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.techease.pfd.Configuration.Links;
@@ -33,6 +35,7 @@ import com.techease.pfd.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
     String id,location,first_name,last_name,birthday,Useremail,gender;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    private static final String EMAIL = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
             //for getting device token
         String android_id = Settings.Secure.getString(getApplicationContext().getContentResolver(),
                 Settings.Secure.ANDROID_ID);
@@ -70,28 +74,30 @@ public class MainActivity extends AppCompatActivity {
                 {
                    // editor.putString("api_token","").commit();
                     FBloginButton.performClick();
-                    FBloginButton.setReadPermissions("email");
+                    callbackManager = CallbackManager.Factory.create();
+                    FBloginButton.setReadPermissions(Arrays.asList(EMAIL));
+                    LoginManager.getInstance().logInWithReadPermissions(MainActivity.this, Arrays.asList("email"));
                     FBloginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                         @Override
                         public void onSuccess(LoginResult loginResult) {
 
                             String accessToken = loginResult.getAccessToken().getToken();
+                            Log.i("access",accessToken);
                             provider_id = accessToken;
                             editor.putString("accesstoken",provider_id).commit();
                             GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
 
                                 @Override
                                 public void onCompleted(JSONObject object, GraphResponse response) {
-                                    Log.i("LoginActivity", object.toString());
+                                    Log.i("LoginActivity", response.toString());
                                     // Get facebook data from login
                                         String fbLogin="fb";
                                         editor.putString("fb",fbLogin).commit();
                                     try {
                                         id=object.getString("id");
                                         first_name=object.getString("first_name");
-                                       Useremail=object.getString("email");
-                                       last_name=object.getString("last_name");
-
+                                        Useremail=object.getString("email");
+                                        last_name=object.getString("last_name");
                                         apiCall();
 
                                         editor.putString("userId",id);
@@ -102,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                                         Log.d("zmaId",id);
                                         Log.d("zmaLname",last_name);
                                         Log.d("zmaFname",first_name);
-                                        Log.d("zmaEmail",Useremail);
+                                        //Log.d("zmaEmail",Useremail);
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                     }
@@ -122,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                                 }
                             });
                             Bundle parameters = new Bundle();
-                            parameters.putString("fields", "id, first_name, last_name, email, gender, birthday, location"); // Parámetros que pedimos a facebook
+                            parameters.putString("fields", "id, email,first_name, last_name, gender,link,location"); // Parámetros que pedimos a facebook
                             request.setParameters(parameters);
                             request.executeAsync();
 
@@ -147,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onError(FacebookException error) {
                             final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.ERROR_TYPE);
                             pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                            pDialog.setTitleText(error.getCause().toString());
+                            pDialog.setTitleText(String.valueOf(error.getCause()));
                             pDialog.setConfirmText("OK");
                             pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -191,15 +197,15 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("data");
 
                             Fb_token=jsonObject.getString("api_token");
-                            Log.d("zmazma",Fb_token);
+                        Toast.makeText(MainActivity.this, Fb_token, Toast.LENGTH_SHORT).show();
                             editor.putString("api_token",Fb_token).commit();
                             Toast.makeText(MainActivity.this, "You have been logged in through your facebook account", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(MainActivity.this, Dashboard.class));
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
 
-                    startActivity(new Intent(MainActivity.this, Dashboard.class));
 
 
             }
@@ -224,6 +230,7 @@ public class MainActivity extends AppCompatActivity {
                 params.put("provider", provider);
                 params.put("device_type",device_type);
                 params.put("device_token",device_token);
+                Log.d("zmaParams",params.toString());
                 return params;
             }
 

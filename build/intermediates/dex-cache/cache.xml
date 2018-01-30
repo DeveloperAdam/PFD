@@ -3,6 +3,15 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Adam Noor\.android\build-cache\941e7fbecceaf05a4270f0a930a7d008b919f531\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.2"
+        sha1="b1c250352bb7bbd5ea1982ca5165f2a81f36b530">
+        <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_3bacf81e9b3e129b1ebc868e468b1574ae007509\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Adam Noor\.android\build-cache\71b0d10d64aae8d57db138a600b0349540f600bc\output\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -43,7 +52,7 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.2"
-        sha1="831961ba3c89aa5610dd47ee16c4274402b84155">
+        sha1="fddfc17b2ea99811fef2f7544f3f786951fd8d5e">
         <dex dex="E:\AndroidProjects\PFD\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_d2fea851c5fda2b7f0f5c716edb794af8b781b89\classes.dex" />
     </item>
     <item

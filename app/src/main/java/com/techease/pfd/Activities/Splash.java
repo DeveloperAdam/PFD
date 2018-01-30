@@ -37,7 +37,7 @@ public class Splash extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-
+       // getHasKey();
         ivSpalsh=(ImageView)findViewById(R.id.ivSplash);
         ivWifi=(ImageView)findViewById(R.id.ivNointernet);
         textView=(TextView)findViewById(R.id.tv);
@@ -67,7 +67,7 @@ public class Splash extends AppCompatActivity {
                 } finally {
 
                        Check();
-                      // getHasKey();
+
 
                 }
             }
@@ -114,7 +114,7 @@ public class Splash extends AppCompatActivity {
         //Get Has Key
         try
         {
-            PackageInfo info = getPackageManager().getPackageInfo("techease.com.postcard", PackageManager.GET_SIGNATURES);
+            PackageInfo info = getPackageManager().getPackageInfo("com.techease.pfd", PackageManager.GET_SIGNATURES);
             for (Signature signature : info.signatures)
             {
                 MessageDigest md = MessageDigest.getInstance("SHA");

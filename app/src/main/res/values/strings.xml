@@ -15,8 +15,8 @@
     <string name="LongTextPizzaHutInfo">The simplest way to add Facebook Login to your app is to add LoginButton from the SDK. The LoginButton is a UI element that wraps functionality available in the LoginManager. When someone clicks on the button, the login is initiated with the permissions set in the LoginManager. The button follows the login state, and displays the correct text based on someone\'s authentication state</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="facebook_app_id">119269392093047</string>
-    <string name="fb_login_protocol_scheme">fb119269392093047</string>
+    <string name="facebook_app_id">908519785993093</string>
+    <string name="fb_login_protocol_scheme">fb908519785993093</string>
 
     <string name="newPass"><font size="15">ENTER NEW PASSWORD</font></string>
     <string name="graph">Graph</string>
@@ -91,4 +91,21 @@ We hope that this app will become a healthy platform that will help foodies in c
     <string name="verify">VERIFY</string>
     <string name="fast_food">Fast Food</string>
     <string name="vegetable">Vegetable</string>
+    <string name="strange">Signup screen design – (Your choice)
+Signup – Name, mobile no,, Referral number.  I don’t want to keep login screen. Once someone signup next time no need to login again he can access direct (it Means 2nd time when user open app it will go directly to home page)
+
+Menu – (there will be a side bar Manu) Example see below.
+1.	Home. 2 Earn extra. 3. Earning reports 4. How to work 5. about us 7. Exit
+    2.	Eran Extra: here you will add a Admob Rewarded video ad. When user click on Earn Extra video ad will start when ad finish 2 points will added to account. ( point editable)
+3.	Earning reports : when click home it will go to new page.  Here will show the earnings report separately (1. Total earning points. 2 referral earning points.3 Extra Earning points. 4. Total redeems. 5. Total referal
+4.	How to work: here will be a website link. That’s it. (link editable)
+5.	About us: here will be a website link. (link editable)
+6.
+7.	Exit: if user clicks on Exit. App will close.
+
+
+Point System:  If someone finish all the task 10 points. will added to wallet. (pointEditable)
+
+Redeem system : need to set a fixed points (Example minimum 1000 points need to redeem . If below 1000 it will show massage Like my app showing which I given to you).( point Editable)
+</string>
 </resources>

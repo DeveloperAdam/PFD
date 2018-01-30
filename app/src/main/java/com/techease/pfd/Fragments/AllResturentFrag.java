@@ -69,6 +69,7 @@ public class AllResturentFrag extends Fragment {
             sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             api_token=sharedPreferences.getString("api_token","");
+            Toast.makeText(getActivity(), api_token, Toast.LENGTH_SHORT).show();
             recyclerView=(RecyclerView)view.findViewById(R.id.rvPesh_FD);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             PFDmodels=new ArrayList<>();

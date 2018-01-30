@@ -41,7 +41,8 @@
     android:scaleType="fitXY"
     app:pressedTranslationZ="12dp"
     android:layout_margin="@dimen/fab_margin"
-    android:src="@drawable/addflot" />
+        android:tint="#fff"
+    android:src="@drawable/ic_add_black_24dp" />
 </FrameLayout>
 
 </LinearLayout>
