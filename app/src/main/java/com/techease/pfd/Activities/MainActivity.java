@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -50,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     String id,location,first_name,last_name,birthday,Useremail,gender;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
+    android.support.v7.app.AlertDialog alertDialog;
     private static final String EMAIL = "email";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,18 +113,6 @@ public class MainActivity extends AppCompatActivity {
                                         e.printStackTrace();
                                     }
 
-                                    final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.SUCCESS_TYPE);
-                                    pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                                    pDialog.setTitleText("Logged in successfully");
-                                    pDialog.setConfirmText("OK");
-                                    pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                        @Override
-                                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                            pDialog.dismissWithAnimation();
-                                            startActivity(new Intent(MainActivity.this,Dashboard.class));
-                                        }
-                                    });
-                                    pDialog.show();
                                 }
                             });
                             Bundle parameters = new Bundle();
@@ -136,17 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
                         @Override
                         public void onCancel() {
-                            final SweetAlertDialog pDialog = new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE);
-                            pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
-                            pDialog.setTitleText("Error");
-                            pDialog.setConfirmText("OK");
-                            pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                    pDialog.dismissWithAnimation();
-                                }
-                            });
-                            pDialog.show();
+
                         }
 
                         @Override
@@ -197,9 +175,8 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response).getJSONObject("data");
 
                             Fb_token=jsonObject.getString("api_token");
-                        Toast.makeText(MainActivity.this, Fb_token, Toast.LENGTH_SHORT).show();
                             editor.putString("api_token",Fb_token).commit();
-                            Toast.makeText(MainActivity.this, "You have been logged in through your facebook account", Toast.LENGTH_LONG).show();
+                        
                         startActivity(new Intent(MainActivity.this, Dashboard.class));
 
                     } catch (JSONException e) {

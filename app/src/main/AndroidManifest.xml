@@ -63,6 +63,10 @@
         <activity
             android:name=".Activities.Intro.intro1"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.Intro.intro2"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".Activities.Intro.intro3"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Activities.FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

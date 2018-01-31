@@ -7,13 +7,11 @@
     android:background="#fff"
     tools:context="com.techease.pfd.Fragments.AllResturentFrag">
     <com.mancj.materialsearchbar.MaterialSearchBar
-        app:mt_speechMode="true"
-        android:searchIcon="@drawable/target"
         app:mt_maxSuggestionsCount="10"
+        app:mt_hint="Custom hint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/sv" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvPesh_FD"
         android:layout_width="match_parent"

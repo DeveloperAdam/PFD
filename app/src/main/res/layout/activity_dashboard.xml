@@ -15,11 +15,12 @@
         android:layout_height="match_parent" />
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="200sp"
+        android:layout_width="230sp"
         android:layout_height="match_parent"
+        android:layout_marginTop="5sp"
         android:background="#fff"
         android:layout_gravity="start"
-        app:itemTextColor="#295786"
+        app:itemTextColor="@color/colorPrimary"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_dashboard"
         app:menu="@menu/activity_dashboard_drawer" >

@@ -64,8 +64,7 @@ public class Dashboard extends AppCompatActivity
         editor = sharedprefs.edit();
         fname = sharedprefs.getString("fname", "");
         email=sharedprefs.getString("email","");
-        if (fname != null) {
-            tvUserName.setText(fname);
+        if (email != null) {
             tvUserEmail.setText(email);
         }
 
@@ -90,7 +89,7 @@ public class Dashboard extends AppCompatActivity
 
 
     private void applyFontToMenuItem(MenuItem mi) {
-        Typeface font = Typeface.createFromAsset(getAssets(), "font/brandon_bld.otf");
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/brandon_blk.otf");
         SpannableString mNewTitle = new SpannableString(mi.getTitle());
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);
@@ -163,8 +162,8 @@ public class Dashboard extends AppCompatActivity
         {
             FacebookSdk.sdkInitialize(getApplicationContext());
             LoginManager.getInstance().logOut();
-            editor.putString("api_token"," ");
-            editor.putString("fb"," ").commit();
+            editor.putString("api_token","");
+            editor.putString("fb","").commit();
             startActivity(new Intent(Dashboard.this, MainActivity.class));
             final SweetAlertDialog pDialog = new SweetAlertDialog(Dashboard.this, SweetAlertDialog.SUCCESS_TYPE);
             pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));

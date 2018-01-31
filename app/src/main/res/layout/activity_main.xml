@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@drawable/loginbackpic">
+    android:background="@color/colorPrimary">
 
 
     <ImageView
@@ -28,11 +28,13 @@
     android:id="@+id/FbBtn"
     android:layout_width="match_parent"
     android:layout_height="50sp"
-    android:background="@drawable/facebookbutton"
+    android:background="@drawable/loginwithemail"
     android:text="Facebook login"
-    android:textColor="#fff"
+    android:textColor="@color/colorPrimary"
     android:textSize="16sp"
+    android:paddingBottom="7sp"
     android:textStyle="bold"
+    android:textAlignment="center"
     android:paddingLeft="20sp"
     android:drawableLeft="@drawable/facebook_logo"
     android:layout_margin="20sp"/>
@@ -78,7 +80,7 @@
         android:background="@drawable/loginwithemail"
         android:drawableLeft="@drawable/email"
         android:text="Log In With Email"
-        android:textColor="#129FDD"
+        android:textColor="@color/colorPrimary"
         android:paddingLeft="20sp"
         android:layout_margin="20sp"
         android:textStyle="bold"

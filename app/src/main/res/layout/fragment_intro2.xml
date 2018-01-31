@@ -17,12 +17,12 @@
         android:textStyle="bold"
         android:id="@+id/Bistro"
         android:textSize="25sp"
-        android:textColor="#fff"
+        android:textColor="@color/colorPrimary"
         android:layout_marginBottom="170sp"/>
     <View
         android:layout_width="250sp"
         android:layout_height="2sp"
-        android:background="#fff"
+        android:background="@color/colorPrimary"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="165sp"/>
     <TextView
@@ -32,7 +32,7 @@
    CHARCOAL GRILLING. IT ADDS A RAW,
    DISTINCTIVE TASTE TO YOUR SAUSAGES,
 BURGERS, RIBS, AND OTHER GRILLED ITEMS"
-        android:textColor="#fff"
+        android:textColor="#474747"
         android:layout_gravity="bottom|center"
         android:id="@+id/intro2Longtext"
         android:layout_marginBottom="70sp"

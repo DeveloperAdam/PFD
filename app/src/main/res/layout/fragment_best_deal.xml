@@ -8,8 +8,6 @@
     tools:context="com.techease.pfd.Fragments.BestDeal">
 
     <com.mancj.materialsearchbar.MaterialSearchBar
-        app:mt_speechMode="true"
-        app:mt_hint="Search..."
         android:searchIcon="@drawable/target"
         app:mt_maxSuggestionsCount="10"
         android:layout_width="match_parent"

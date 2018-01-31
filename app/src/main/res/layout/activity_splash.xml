@@ -1,65 +1,20 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@color/colorPrimary"
     tools:context="com.techease.pfd.Activities.Splash">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/splash"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/whitelogo"
+        android:layout_gravity="center"
         android:id="@+id/ivSplash"
         />
 
-    <ImageView
-        android:layout_width="50sp"
-        android:layout_height="50sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="169dp"
-        android:src="@drawable/internet"
-        android:visibility="gone"
-        android:id="@+id/ivNointernet" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ivNointernet"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:visibility="gone"
-        android:gravity="center"
-        android:textColor="#fff"
-        android:id="@+id/tv"
-        android:textSize="17sp"
-        android:text="Opps your device is not connected with internet" />
-
-    <Button
-        android:layout_width="100sp"
-        android:layout_height="wrap_content"
-        android:text="Try Again"
-        android:textSize="17sp"
-        android:textColor="@color/colorPrimary"
-        android:id="@+id/btnTryAgain"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150sp"
-       android:visibility="gone"
-        android:background="@drawable/tags_btn"
-   />
-
-
-    <ProgressBar
-        android:id="@+id/progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="50sp"
-        android:layout_height="wrap_content"
-        android:indeterminate="true"
-        android:visibility="gone"
-        android:layout_centerInParent="true"
-        android:max="100"
-        android:progress="0" />
-
-</RelativeLayout>
+</LinearLayout>

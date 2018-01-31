@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:text="@string/restName"
         android:textSize="15sp"
-        android:textColor="#275786"
+        android:textColor="@color/colorPrimary"
         android:textStyle="bold"
         android:layout_marginTop="5sp"
         android:layout_marginLeft="20sp"/>
@@ -35,7 +35,7 @@
         android:orientation="horizontal">
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="15sp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5sp"
         android:background="@drawable/locationicon"
         android:layout_marginLeft="20sp"/>
@@ -47,7 +47,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10sp"
             android:text="@string/location"
-            android:textColor="#129FDD"
             android:textSize="13sp" />
     </LinearLayout>
     <android.support.design.widget.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"

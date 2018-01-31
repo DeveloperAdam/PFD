@@ -64,6 +64,7 @@ public class AllResturentFrag extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.allresturantfrag, container, false);
         searchView=(MaterialSearchBar) view.findViewById(R.id.sv);
+        searchView.setHint("Search here");
         searchEducationList();
         if(CheckNetwork.isInternetAvailable(getActivity()))
         {

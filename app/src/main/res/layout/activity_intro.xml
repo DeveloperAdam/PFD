@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
-            android:background="@color/black_overlay"
+            android:background="@color/colorPrimary"
             android:orientation="horizontal"
             tools:ignore="UselessParent">
 
@@ -40,6 +40,7 @@
                 android:id="@+id/dummy_button"
                 style="?metaButtonBarButtonStyle"
                 android:layout_width="0dp"
+                android:textColor="@color/colorPrimary"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/dummy_button" />

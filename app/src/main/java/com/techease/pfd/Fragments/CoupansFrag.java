@@ -51,7 +51,6 @@ public class CoupansFrag extends Fragment {
             CoupanName=(TextView)view.findViewById(R.id.coupanName);
             CoupanTime=(TextView)view.findViewById(R.id.coupansValidation);
             DiscountNo=(TextView)view.findViewById(R.id.DiscountNo);
-            DiscountType=(TextView)view.findViewById(R.id.DiscountType);
 
             sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
@@ -84,8 +83,7 @@ public class CoupansFrag extends Fragment {
                     JSONObject object=jsonObject.getJSONObject("data");
                         CoupanName.setText(object.getString("coupon_code"));
                         CoupanTime.setText(object.getString("expiry"));
-                        DiscountNo.setText(object.getString("discount"));
-                        DiscountType.setText(object.getString("discount_type"));
+                        DiscountNo.setText("Get "+object.getString("discount")+"% Disscount");
                     if (alertDialog!=null)
                         alertDialog.dismiss();
 
