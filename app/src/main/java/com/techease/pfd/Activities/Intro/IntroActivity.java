@@ -9,8 +9,8 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.github.paolorotolo.appintro.AppIntro;
-import com.techease.pfd.Activities.MainActivity;
 import com.techease.pfd.Activities.Dashboard;
+import com.techease.pfd.Activities.MainActivity;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Fragments.SliderFragmanet;
 

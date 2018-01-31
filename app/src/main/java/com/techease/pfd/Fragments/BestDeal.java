@@ -13,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +28,7 @@ import com.techease.pfd.Adapters.BestDealAdapter;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Controller.BestDealModel;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 import com.techease.pfd.Utils.CheckNetwork;
 
 import org.json.JSONArray;
@@ -52,8 +52,9 @@ public class BestDeal extends Fragment {
     SharedPreferences.Editor editor;
     String api_token;
     MaterialSearchBar searchView;
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
+//    ProgressBar progressBar;
+//    int progressbarstatus = 0;
+    android.support.v7.app.AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,7 +64,6 @@ public class BestDeal extends Fragment {
         //Declaration
         recyclerView=(RecyclerView)view.findViewById(R.id.rvBestDeal);
         searchView=(MaterialSearchBar) view.findViewById(R.id.svBestdeal);
-        progressBar=(ProgressBar)view.findViewById(R.id.progress_barBestDeal);
         searchEducationList();
         if(CheckNetwork.isInternetAvailable(getActivity()))
         {
@@ -73,7 +73,11 @@ public class BestDeal extends Fragment {
             api_token=sharedPreferences.getString("api_token","");
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             bestDealModels=new ArrayList<>();
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
+            if (alertDialog==null)
+            {
+                alertDialog= Alert_Utils.createProgressDialog(getActivity());
+                alertDialog.show();
+            }
             apicall();
             bestDealAdapter=new BestDealAdapter(getActivity(),bestDealModels);
             recyclerView.setAdapter(bestDealAdapter);
@@ -119,8 +123,6 @@ public class BestDeal extends Fragment {
     }
 
     private void apicall() {
-//        progressBar.setVisibility(View.VISIBLE);
-//        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/featured?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
@@ -145,14 +147,16 @@ public class BestDeal extends Fragment {
                         model.setId(InnerMostObj.getString("id"));
 
                         bestDealModels.add(model);
-                        DialogUtils.sweetAlertDialog.dismiss();
-                   //     progressBar.setVisibility(View.INVISIBLE);
+                        if (alertDialog!=null)
+                            alertDialog.dismiss();
 
                     }
                     bestDealAdapter.notifyDataSetChanged();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                 }
             }
 
@@ -160,7 +164,8 @@ public class BestDeal extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
              //   progressBar.setVisibility(View.INVISIBLE);
-                DialogUtils.sweetAlertDialog.dismiss();
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Server Error");
@@ -204,22 +209,4 @@ public class BestDeal extends Fragment {
 
     }
 
-    private void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
-    }
 }

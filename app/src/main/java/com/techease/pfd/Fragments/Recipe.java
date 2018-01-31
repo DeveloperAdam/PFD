@@ -55,7 +55,7 @@ public class Recipe extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment=new AddingRecipeFragment();
+                Fragment fragment=new CreateNewRecipeFragment();
                 getFragmentManager().beginTransaction().replace(R.id.container,fragment).addToBackStack("abc").commit();
             }
         });

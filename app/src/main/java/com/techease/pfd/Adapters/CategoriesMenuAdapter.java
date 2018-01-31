@@ -62,6 +62,20 @@ public class CategoriesMenuAdapter extends RecyclerView.Adapter<CategoriesMenuAd
         holder.ItemName.setText(model.getItemName());
         holder.ItemPrice.setText(model.getItemPrice());
         holder.ItemDes.setText(model.getItemDes());
+        String rating  = model.getItemRating();
+        if ( rating !=null){
+            if (rating.length() > 4) {
+                rating = rating.substring(0, 4);
+                holder.ratingBar.setRating(Float.parseFloat(rating));
+                Log.d("zma 1 rating length", rating);
+            }else {
+                holder.ratingBar.setRating(Float.parseFloat(rating));
+                Log.d("zma 2 rating length", rating);
+            }
+        }else {
+            holder.ratingBar.setRating(Float.parseFloat("0.00"));
+        }
+       // holder.ratingBar.setRating(Float.parseFloat(model.getItemRating()));
         holder.ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -71,6 +85,7 @@ public class CategoriesMenuAdapter extends RecyclerView.Adapter<CategoriesMenuAd
                 holder.ratingBar.setRating(rating);
                 holder.ratingBar.isIndicator();
                 menu_id=model.getItemId();
+                editor.putFloat("rate",rating).commit();
                 tokenId=sharedPreferences.getString("api_token","");
                 reviewMessage="This is review";
                 ratingValue=String.valueOf(rating);

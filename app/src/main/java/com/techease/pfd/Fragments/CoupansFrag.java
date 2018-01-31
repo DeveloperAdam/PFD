@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 import com.techease.pfd.Utils.CheckNetwork;
 
 import org.json.JSONException;
@@ -39,8 +39,7 @@ public class CoupansFrag extends Fragment {
     String api_token,restId;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
+    android.support.v7.app.AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,7 +48,6 @@ public class CoupansFrag extends Fragment {
         if(CheckNetwork.isInternetAvailable(getActivity())) //returns true if internet available
         {
 
-            progressBar=(ProgressBar)view.findViewById(R.id.progress_barCoupans);
             CoupanName=(TextView)view.findViewById(R.id.coupanName);
             CoupanTime=(TextView)view.findViewById(R.id.coupansValidation);
             DiscountNo=(TextView)view.findViewById(R.id.DiscountNo);
@@ -59,7 +57,11 @@ public class CoupansFrag extends Fragment {
             editor = sharedPreferences.edit();
             api_token=sharedPreferences.getString("api_token","");
             restId=sharedPreferences.getString("restId","");
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
+            if (alertDialog==null)
+            {
+                alertDialog= Alert_Utils.createProgressDialog(getActivity());
+                alertDialog.show();
+            }
             apicall();
         }
         else
@@ -77,7 +79,6 @@ public class CoupansFrag extends Fragment {
             @Override
             public void onResponse(String response) {
                 Log.d("rest respo", response);
-                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                     JSONObject jsonObject=new JSONObject(response);
                     JSONObject object=jsonObject.getJSONObject("data");
@@ -85,18 +86,21 @@ public class CoupansFrag extends Fragment {
                         CoupanTime.setText(object.getString("expiry"));
                         DiscountNo.setText(object.getString("discount"));
                         DiscountType.setText(object.getString("discount_type"));
-                        progressBar.setVisibility(View.INVISIBLE);
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
 
                 } catch (JSONException e) {
-                    progressBar.setVisibility(View.INVISIBLE);
                     e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                 }
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Server Error");
@@ -130,23 +134,6 @@ public class CoupansFrag extends Fragment {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
     }
-    private void setProgressValue(final int progress) {
 
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
-    }
 
 }

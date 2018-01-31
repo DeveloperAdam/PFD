@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -24,6 +23,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,8 +40,9 @@ public class RecipeByIdFragment extends Fragment {
     String api_token,recipeId;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
+    TextView tvRecipeName;
+    ImageView imageButton;
+    android.support.v7.app.AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ public class RecipeByIdFragment extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        progressBar=(ProgressBar)view.findViewById(R.id.pbRecipeById);
         typeface=Typeface.createFromAsset(getActivity().getAssets(),"font/brandon_reg.otf");
         typeface2=Typeface.createFromAsset(getActivity().getAssets(),"font/brandon_blk.otf");
         imageView=(ImageView)view.findViewById(R.id.ivRecipeByIdItemImage);
@@ -64,12 +64,15 @@ public class RecipeByIdFragment extends Fragment {
         ShowCat=(TextView)view.findViewById(R.id.showCateogry);
         ShowIns=(TextView)view.findViewById(R.id.showInstructions);
         ShowIng=(TextView)view.findViewById(R.id.showIngredients);
+        tvRecipeName=(TextView)view.findViewById(R.id.tvRecipeNameOnImage);
+        imageButton=(ImageView)view.findViewById(R.id.ib);
 
         Title.setTypeface(typeface2);
         Time.setTypeface(typeface2);
         Ing.setTypeface(typeface2);
         Ins.setTypeface(typeface2);
         Cat.setTypeface(typeface2);
+        tvRecipeName.setTypeface(typeface);
 
         ShowIns.setTypeface(typeface);
         ShowIng.setTypeface(typeface);
@@ -77,9 +80,14 @@ public class RecipeByIdFragment extends Fragment {
         ShowTime.setTypeface(typeface);
         ShowCat.setTypeface(typeface);
 
+
         api_token=sharedPreferences.getString("api_token","");
         recipeId=getArguments().getString("recipeId");
-
+        if (alertDialog==null)
+        {
+            alertDialog= Alert_Utils.createProgressDialog(getActivity());
+            alertDialog.show();
+        }
         apicall();
 
 
@@ -87,8 +95,6 @@ public class RecipeByIdFragment extends Fragment {
     }
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/user/recipes/"+recipeId+
                 "?api_token="+api_token
                 , new Response.Listener<String>() {
@@ -103,22 +109,26 @@ public class RecipeByIdFragment extends Fragment {
                         ShowCat.setText(object.getString("tags"));
                         ShowIng.setText(object.getString("ingredients"));
                         ShowTitle.setText(object.getString("title"));
+                        tvRecipeName.setText(object.getString("title"));
                         ShowIns.setText(object.getString("instructions"));
                         Glide.with(getActivity()).load(object.getString("image_url")).into(imageView);
-                        progressBar.setVisibility(View.INVISIBLE);
 
-
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                 }
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.INVISIBLE);
                 Log.d("error" , String.valueOf(error.getCause()));
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
 
             }
         }) {
@@ -141,22 +151,4 @@ public class RecipeByIdFragment extends Fragment {
         mRequestQueue.add(stringRequest);
     }
 
-    private void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
-    }
 }

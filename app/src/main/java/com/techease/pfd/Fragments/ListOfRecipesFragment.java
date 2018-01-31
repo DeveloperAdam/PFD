@@ -4,15 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
+import android.widget.GridView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -27,6 +23,7 @@ import com.techease.pfd.Adapters.ListOfRecipeAdapter;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Controller.ListOfRecipeModel;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,20 +31,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ListOfRecipesFragment extends Fragment {
 
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
-    RecyclerView recyclerView;
+
+    GridView gridView;
     ListOfRecipeAdapter listOfRecipeAdapter;
-    List<ListOfRecipeModel> listOfRecipeModels;
+    ArrayList<ListOfRecipeModel> listOfRecipeModels;
     String api_token;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     MaterialSearchBar searchView;
+    android.support.v7.app.AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,53 +52,52 @@ public class ListOfRecipesFragment extends Fragment {
 
         sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-        searchView=(MaterialSearchBar) view.findViewById(R.id.sv2);
-        searchEducationList();
+      //  searchView=(MaterialSearchBar) view.findViewById(R.id.sv2);
+      //  searchEducationList();
         api_token=sharedPreferences.getString("api_token","");
-        progressBar=(ProgressBar)view.findViewById(R.id.progressbarListofRecipe);
-        recyclerView=(RecyclerView)view.findViewById(R.id.rvListOfRecipe);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        gridView=(GridView) view.findViewById(R.id.rvListOfRecipe);
         listOfRecipeModels=new ArrayList<>();
+        if (alertDialog==null)
+        {
+            alertDialog= Alert_Utils.createProgressDialog(getActivity());
+            alertDialog.show();
+        }
         apicall();
-        listOfRecipeAdapter=new ListOfRecipeAdapter(getActivity(),listOfRecipeModels);
-        recyclerView.setAdapter(listOfRecipeAdapter);
 
 
         return view;
     }
 
-    private void searchEducationList() {
-        searchView.addTextChangeListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence query, int i, int i1, int i2) {
-                Log.d("LOG_TAG", getClass().getSimpleName() + " text changed " + searchView.getText());
-
-                query = query.toString().toLowerCase();
-                List<ListOfRecipeModel> newData = new ArrayList<>();
-                for (int j = 0; j < listOfRecipeModels.size(); j++) {
-                    final String test2 = listOfRecipeModels.get(j).getRecipeName().toLowerCase();
-                    if (test2.startsWith(String.valueOf(query))) {
-                        newData.add(listOfRecipeModels.get(j));
-                    }
-                }
-                listOfRecipeAdapter = new ListOfRecipeAdapter(getActivity(), newData);
-                recyclerView.setAdapter(listOfRecipeAdapter);
-                listOfRecipeAdapter.notifyDataSetChanged();
-            }
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-    }
+//    private void searchEducationList() {
+//        searchView.addTextChangeListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence query, int i, int i1, int i2) {
+//                Log.d("LOG_TAG", getClass().getSimpleName() + " text changed " + searchView.getText());
+//
+//                query = query.toString().toLowerCase();
+//                List<ListOfRecipeModel> newData = new ArrayList<>();
+//                for (int j = 0; j < listOfRecipeModels.size(); j++) {
+//                    final String test2 = listOfRecipeModels.get(j).getRecipeName().toLowerCase();
+//                    if (test2.startsWith(String.valueOf(query))) {
+//                        newData.add(listOfRecipeModels.get(j));
+//                    }
+//                }
+//              //  listOfRecipeAdapter = new ListOfRecipeAdapter(getActivity(), newData);
+//               // recyclerView.setAdapter(listOfRecipeAdapter);
+//                listOfRecipeAdapter.notifyDataSetChanged();
+//            }
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//
+//            }
+//        });
+//    }
 
     private void apicall() {
-        progressBar.setVisibility(View.VISIBLE);
-        setProgressValue(progressbarstatus);
         StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://pfd.techeasesol.com/api/v1/recipes/all?api_token="+api_token
                 , new Response.Listener<String>() {
             @Override
@@ -112,6 +107,7 @@ public class ListOfRecipesFragment extends Fragment {
                     listOfRecipeModels.clear();
                     JSONObject jsonObject=new JSONObject(response);
                     JSONArray jsonArr=jsonObject.getJSONArray("data");
+                    listOfRecipeModels=new ArrayList<>();
                     for (int i=0; i<jsonArr.length(); i++)
                     {
                         JSONObject temp = jsonArr.getJSONObject(i);
@@ -125,21 +121,30 @@ public class ListOfRecipesFragment extends Fragment {
                         model.setRecipeIns(temp.getString("instructions"));
 
                         listOfRecipeModels.add(model);
-                        progressBar.setVisibility(View.INVISIBLE);
+                        if (alertDialog!=null)
+                            alertDialog.dismiss();
 
                     }
-                    listOfRecipeAdapter.notifyDataSetChanged();
+                    if (getActivity()!=null)
+                    {
+                        listOfRecipeAdapter=new ListOfRecipeAdapter(getActivity(),listOfRecipeModels);
+                        gridView.setAdapter(listOfRecipeAdapter);
+                        listOfRecipeAdapter.notifyDataSetChanged();
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                 }
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressBar.setVisibility(View.INVISIBLE);
                 Log.d("error" , String.valueOf(error.getCause()));
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
 
             }
         }) {
@@ -167,27 +172,8 @@ public class ListOfRecipesFragment extends Fragment {
         super.onResume();
         apicall();
         listOfRecipeAdapter=new ListOfRecipeAdapter(getActivity(),listOfRecipeModels);
-        recyclerView.setAdapter(listOfRecipeAdapter);
+        gridView.setAdapter(listOfRecipeAdapter);
 
-    }
-
-    private void setProgressValue(final int progress) {
-
-        // set the progress
-        progressBar.setProgress(progress);
-        // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                setProgressValue(progress + 10);
-            }
-        });
-        thread.start();
     }
 
 

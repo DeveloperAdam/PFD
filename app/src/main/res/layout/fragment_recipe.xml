@@ -4,21 +4,22 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:background="#fff"
     tools:context="com.techease.pfd.Fragments.Recipe">
 
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayoutRecipe"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="40sp"
             app:tabGravity="fill"
             app:tabMode="fixed"
-            android:background="@color/colorPrimary"
+            android:background="#fff"
             android:layout_gravity="center"
-            app:tabTextColor="#BDBDBD"
+            app:tabTextColor="@color/colorPrimary"
             app:tabPaddingStart="20sp"
-            app:tabSelectedTextColor="#fff"
-            app:tabIndicatorColor="#eee"
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabIndicatorColor="@color/colorPrimary"
             app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
 <FrameLayout

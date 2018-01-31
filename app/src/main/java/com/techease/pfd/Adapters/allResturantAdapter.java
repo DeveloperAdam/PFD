@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,9 +54,18 @@ public class allResturantAdapter extends RecyclerView.Adapter<allResturantAdapte
         holder.Image_Url=peshFdModel.getImageUrl();
         holder.id=peshFdModel.getId();
         holder.editor.putString("Rest_id",peshFdModel.getId());
-        if (peshFdModel.getRating()!=null)
-        {
-            holder.ratingBar.setRating(Float.parseFloat(peshFdModel.getRating()));
+        String rating  = peshFdModel.getRating();
+        if ( rating !=null){
+            if (rating.length() > 4) {
+                rating = rating.substring(0, 4);
+                holder.ratingBar.setRating(Float.parseFloat(rating));
+                Log.d("zma 1 rating length", rating);
+            }else {
+                holder.ratingBar.setRating(Float.parseFloat(rating));
+                Log.d("zma 2 rating length", rating);
+            }
+        }else {
+            holder.ratingBar.setRating(Float.parseFloat("0.00"));
         }
         Glide.with(context).load(holder.Image_Url).into(holder.imageView);
         holder.editor.putInt("No resturents",(allResturant_models.size()));

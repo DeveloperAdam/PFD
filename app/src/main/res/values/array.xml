@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recipeCategory">
+        <item>Recipe Category</item>
+        <item>Fast Food</item>
+        <item>Traditional</item>
+        <item>Sweets</item>
+        <item>American</item>
+        <item>Chinese</item>
+        <item>Italian</item>
+        <item>Baking</item>
+        <item>Afghani</item>
+    </string-array>
+</resources>

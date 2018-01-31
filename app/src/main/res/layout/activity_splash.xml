@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Try Again"
         android:textSize="17sp"
-        android:textColor="#129FDD"
+        android:textColor="@color/colorPrimary"
         android:id="@+id/btnTryAgain"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"

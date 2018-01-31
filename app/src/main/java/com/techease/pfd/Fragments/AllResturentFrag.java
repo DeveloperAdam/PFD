@@ -29,6 +29,7 @@ import com.techease.pfd.Adapters.allResturantAdapter;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.Controller.allResturantModel;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 import com.techease.pfd.Utils.CheckNetwork;
 
 import org.json.JSONArray;
@@ -56,6 +57,7 @@ public class AllResturentFrag extends Fragment {
     int progressbarstatus = 0;
     MaterialSearchBar searchView;
     StringTokenizer stringTokenizer;
+    android.support.v7.app.AlertDialog alertDialog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,11 +71,14 @@ public class AllResturentFrag extends Fragment {
             sharedPreferences = getActivity().getSharedPreferences(Links.MyPrefs, Context.MODE_PRIVATE);
             editor = sharedPreferences.edit();
             api_token=sharedPreferences.getString("api_token","");
-            Toast.makeText(getActivity(), api_token, Toast.LENGTH_SHORT).show();
             recyclerView=(RecyclerView)view.findViewById(R.id.rvPesh_FD);
             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             PFDmodels=new ArrayList<>();
-            DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
+            if (alertDialog==null)
+            {
+                alertDialog= Alert_Utils.createProgressDialog(getActivity());
+                alertDialog.show();
+            }
             apicall();
             allResturant_adapter =new allResturantAdapter(getActivity(),PFDmodels);
             recyclerView.setAdapter(allResturant_adapter);
@@ -131,7 +136,6 @@ public class AllResturentFrag extends Fragment {
             @Override
             public void onResponse(String response) {
                 Log.d("zmaResp", response);
-                DialogUtils.sweetAlertDialog.dismiss();
                 try {
                         PFDmodels.clear();
                         JSONObject jsonObject=new JSONObject(response);
@@ -149,12 +153,15 @@ public class AllResturentFrag extends Fragment {
                             model.setImageUrl(temp.getString("image_url"));
                             model.setLocation(temp.getString("location"));
                             JSONArray ratingArray = temp.getJSONArray("rating");
-                            for (int j = 0; j<ratingArray.length();j++){
-                                JSONObject tempRating = ratingArray.getJSONObject(j);
-                                if (temp.has("average"))
-                                {
-                                    model.setRating(tempRating.getString("average"));
+                            for (int j = 0; j<=ratingArray.length();j++){
+                                JSONObject ratingTemp = ratingArray.isNull(j)? null : ratingArray.getJSONObject(j);
+                                assert ratingTemp != null;
+                                if (ratingTemp != null) {
+                                    model.setRating(ratingTemp.isNull("average") ? null : ratingTemp.getString("average"));
                                 }
+                                   // model.setRating(tempRating.getString("average"));
+                                if (alertDialog!=null)
+                                    alertDialog.dismiss();
 
                             }
 
@@ -167,6 +174,8 @@ public class AllResturentFrag extends Fragment {
 
                     } catch (JSONException e) {
                         e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                     }
             }
 
@@ -174,7 +183,8 @@ public class AllResturentFrag extends Fragment {
             @Override
             public void onErrorResponse(VolleyError error) {
             //  progressBar.setVisibility(View.INVISIBLE);
-                DialogUtils.sweetAlertDialog.dismiss();
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Server Error");

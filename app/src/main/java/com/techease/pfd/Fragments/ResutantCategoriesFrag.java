@@ -95,13 +95,15 @@ public class ResutantCategoriesFrag extends Fragment {
                                 JSONArray ratingArray=Obj.getJSONArray("rating");
                                 for (int z=0; z<ratingArray.length(); z++)
                                 {
-                                    JSONObject temp=ratingArray.getJSONObject(z);
-                                    if (temp.has("average"))
+                                    JSONObject temp=ratingArray.isNull(z)?null: ratingArray.getJSONObject(z);
+                                    assert temp != null;
+                                    if (temp!=null)
                                     {
-                                        model.setItemRating(temp.getString("average"));
+                                        model.setItemRating(temp.isNull("average") ? null : temp.getString("average"));
                                     }
                                 }
                                 Cmodel.add(model);
+
                                 progressBar.setVisibility(View.INVISIBLE);
                         }
                         categoriesMenuAdapter.notifyDataSetChanged();

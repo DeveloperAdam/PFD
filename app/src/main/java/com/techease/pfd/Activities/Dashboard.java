@@ -71,7 +71,7 @@ public class Dashboard extends AppCompatActivity
 
         fragment = new AllResturentFrag();
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commit();
-
+        setTitle("Resturants");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -131,30 +131,33 @@ public class Dashboard extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.MainScreen) {
             Fragment fragmentGraph=new AllResturentFrag();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentGraph).commit();
+            setTitle(item.getTitle());
         }  else if (id == R.id.nav_manage) {
             Fragment fragmentCoupan=new CoupansFrag();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentCoupan).addToBackStack("abc").commit();
+            setTitle(item.getTitle());
         } else if (id == R.id.bestdeal) {
             Fragment fragmentBestDeal=new BestDeal();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentBestDeal).addToBackStack("abc").commit();
-
+            setTitle(item.getTitle());
         }else if (id==R.id.addingRecipe){
             Fragment fragmentCoupan=new Recipe();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentCoupan).addToBackStack("abc").commit();
+            setTitle(item.getTitle());
         }
         else if (id == R.id.aboutus) {
             Fragment fragmentCoupan=new AboutUsFrag();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentCoupan).addToBackStack("abc").commit();
-
+            setTitle(item.getTitle());
         }
         else if (id==R.id.nav_setting)
         {
             Fragment fragmentSetting=new Setting();
             getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentSetting).addToBackStack("abc").commit();
+            setTitle(item.getTitle());
         }
         else if (id==R.id.logout)
         {

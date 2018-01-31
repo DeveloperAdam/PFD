@@ -5,33 +5,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="#fff"
+    android:gravity="center"
+    android:layout_gravity="center"
     tools:context="com.techease.pfd.Fragments.ListOfRecipesFragment">
 
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        app:mt_speechMode="true"
-        app:mt_maxSuggestionsCount="10"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/sv2" />
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <ProgressBar
-            android:id="@+id/progressbarListofRecipe"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="50sp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone"
-            android:max="100"
-            android:progress="0" />
+    <!--<com.mancj.materialsearchbar.MaterialSearchBar-->
+        <!--app:mt_speechMode="true"-->
+        <!--app:mt_maxSuggestionsCount="10"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/sv2" />-->
 
-    <android.support.v7.widget.RecyclerView
+    <GridView
+        android:id="@+id/rvListOfRecipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/rvListOfRecipe"
-        android:layout_margin="8sp"
-        ></android.support.v7.widget.RecyclerView>
-    </FrameLayout>
+        android:columnWidth="90dp"
+        android:padding="5sp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_centerInParent = "true"
+        android:horizontalSpacing="5dp"
+        android:numColumns="2"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="5dp"
+        ></GridView>
 </LinearLayout>

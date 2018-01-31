@@ -15,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -29,6 +28,7 @@ import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.techease.pfd.Configuration.Links;
 import com.techease.pfd.R;
+import com.techease.pfd.Utils.Alert_Utils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,23 +47,14 @@ public class ResutrantDetail extends Fragment  {
     SharedPreferences.Editor editor;
     ImageView imageView;
     TextView RestName,RestLocation;
-    ProgressBar progressBar;
-    int progressbarstatus = 0;
+    android.support.v7.app.AlertDialog alertDialog;
     Context context;
     int ID=1;
-    ImageView ivNext,ivBack;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_resturant__details, container, false);
-
-        progressBar=(ProgressBar)view.findViewById(R.id.progress_barRestDetails);
-
-//        ivNext=(ImageView)view.findViewById(R.id.ivNext);
-//        ivBack=(ImageView)view.findViewById(R.id.ivBack);
-//        ivBack.setOnClickListener(this);
-//        ivNext.setOnClickListener(this);
 
 
         //Resturent Id get from All Resturent Fragment
@@ -78,7 +69,11 @@ public class ResutrantDetail extends Fragment  {
         imageView=(ImageView)view.findViewById(R.id.ivPesh_FD_Detial);
         RestName=(TextView)view.findViewById(R.id.tvRestNamePesh_Fd_Details);
         RestLocation=(TextView)view.findViewById(R.id.tvRestLoc_Pesh_Fd_Details);
-        DialogUtils.showProgressSweetDialog(getActivity(), "Loading");
+        if (alertDialog==null)
+        {
+            alertDialog= Alert_Utils.createProgressDialog(getActivity());
+            alertDialog.show();
+        }
         apicall();
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.pagerInfoPizzaHut);
         tabLayout = (TabLayout) view.findViewById(R.id.tabLayoutPizzaHut);
@@ -145,21 +140,25 @@ public class ResutrantDetail extends Fragment  {
                         Glide.with(getActivity()).load(JsonGet.getString("image_url")).into(imageView);
                         RestName.setText(JsonGet.getString("name"));
                         RestLocation.setText(JsonGet.getString("location"));
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
 
-                    DialogUtils.sweetAlertDialog.dismiss();
 
 
 
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    if (alertDialog!=null)
+                        alertDialog.dismiss();
                 }
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                DialogUtils.sweetAlertDialog.dismiss();
+                if (alertDialog!=null)
+                    alertDialog.dismiss();
                 final SweetAlertDialog pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE);
                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#295786"));
                 pDialog.setTitleText("Oppsss");
@@ -194,32 +193,6 @@ public class ResutrantDetail extends Fragment  {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         mRequestQueue.add(stringRequest);
     }
-
-//    @Override
-//    public void onClick(View v) {
-//
-//        int id = v.getId();
-//        switch (id){
-//            case R.id.ivNext:
-//
-//                    restId=String.valueOf(++ID);
-//                    apicall();
-//
-//                break;
-//            case R.id.ivBack:
-//                if (restId.equals("1"))
-//                {
-//                    restId="1";
-//                    apicall();
-//                }
-//                else
-//                    ID=Integer.parseInt(restId);
-//                    restId=String.valueOf(--ID);
-//                    apicall();
-//                break;
-//        }
-//
-//    }
 
 
     public static class PagerAdapter extends FragmentStatePagerAdapter {
